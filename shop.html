@@ -2465,7 +2465,7 @@
   // Dynamic API URL - works locally and on production
 const API_BASE_URL = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1') 
   ? 'http://localhost:5000' 
-  : 'https://lelocal-api-skyproject-1.onrender.com';
+  : 'https://le-local.onrender.com';
 
   // RENDER
   function render() {
@@ -3057,7 +3057,7 @@ const API_BASE_URL = window.location.hostname.includes('localhost') || window.lo
   // INIT
   function loadProducts() {
     const isLocal = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1');
-    const apiUrl = isLocal ? 'http://localhost:5000' : 'https://lelocal-api-skyproject-1.onrender.com';
+    const apiUrl = isLocal ? 'http://localhost:5000' : 'https://le-local.onrender.com';
     fetch(apiUrl + '/products/')
       .then(res => res.json())
       .then(data => {
