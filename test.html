@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Local</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --orange: #E8641A;
+      --navy: #0F0F1A;
+      --navy2: #1A1A2E;
+      --white: #fff;
+    }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      background: radial-gradient(ellipse at 80% 40%, rgba(232,100,26,0.15) 0%, transparent 50%), var(--navy);
+    }
+    .logo { width: 80px; height: 80px; background: #fff; border-radius: 16px; margin-bottom: 20px; }
+    .logo img { width: 100%; height: 100%; object-fit: contain; }
+    .brand { font-size: 2rem; font-weight: 800; }
+    .brand span { color: var(--orange); }
+    .tagline { font-size: 1.1rem; color: rgba(255,255,255,0.7); margin: 16px 0 32px; }
+    h1 { font-size: 3rem; margin: 0; line-height: 1.1; }
+    h1 span { display: block; }
+    .l2 { color: rgba(255,255,255,0.5); }
+    .l3 { color: var(--orange); }
+    p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 400px; margin: 16px 0 32px; line-height: 1.6; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: var(--orange); color: #fff; border-radius: 50px; font-size: 1rem; font-weight: 700; text-decoration: none; }
+    .stats { display: flex; gap: 32px; margin-top: 48px; }
+    .stat { text-align: center; }
+    .stat-n { font-size: 1.5rem; font-weight: 800; }
+    .stat-n span { color: var(--orange); }
+    .stat-l { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="logo"><img src="assets/img/lelocal-removebg-preview.png" alt="Le Local"></div>
+    <div class="brand"><span>Le</span> Local</div>
+    <p class="tagline">Off Licence & Grocery Delivery</p>
+    
+    <h1>
+      <span>DRINKS.</span>
+      <span class="l2">VAPES.</span>
+      <span class="l3">DELIVERED.</span>
+    </h1>
+    
+    <p>Beer, spirits, wine, snacks & more — straight to your door in 20–30 minutes.</p>
+    
+    <a href="index.html" class="btn"><i class="fas fa-bolt"></i> Start Shopping</a>
+    
+    <div class="stats">
+      <div class="stat"><div class="stat-n">20-30</div><div class="stat-l">MIN DELIVERY</div></div>
+      <div class="stat"><div class="stat-n">500+</div><div class="stat-l">PRODUCTS</div></div>
+      <div class="stat"><div class="stat-n">18+</div><div class="stat-l">AGE CHECK</div></div>
+    </div>
+  </section>
+</body>
+</html>

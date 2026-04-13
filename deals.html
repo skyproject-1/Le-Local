@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Special Deals & Offers - Le Local">
+  <meta name="theme-color" content="#E8641A">
+  <title>Special Offers - Le Local</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Great+Vibes:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root { --primary: #E8641A; --primary-light: #ff9f5a; --dark: #1B2D5B; --success: #00B16A; --danger: #EF4444; --bg: #f8f9fa; --white: #FFFFFF; --gray-100: #f3f4f6; --gray-200: #e5e7eb; --gray-400: #9ca3af; --gray-500: #6b7280; --gray-700: #374151; --gray-900: #111827; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Figtree', sans-serif; background: var(--bg); color: var(--gray-900); }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    
+    /* Header */
+    .header { background: #fff; padding: 16px 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-img { width: 56px; height: 56px; border-radius: 12px; }
+    .logo-text { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dark); }
+    .logo-text span { color: var(--primary); }
+    .back-btn { display: flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--dark); color: #fff; border-radius: 10px; font-weight: 600; transition: all 0.2s; }
+    .back-btn:hover { background: var(--primary); transform: translateY(-2px); }
+    
+    /* Hero */
+    .hero { 
+      background: linear-gradient(135deg, var(--primary) 0%, #c9531a 50%, var(--primary-light) 100%);
+      background-size: 200% 200%;
+      animation: heroGlow 3s ease infinite;
+      padding: 80px 24px; 
+      text-align: center; 
+      color: #fff; 
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes heroGlow {
+      0%,100%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+    }
+    .hero::before {
+      content:'🏪';
+      position:absolute;
+      font-size:15rem;
+      opacity:0.1;
+      right:-20px;
+      bottom:-40px;
+    }
+    .hero h1 { 
+      font-size: clamp(2.5rem, 6vw, 4rem); 
+      font-weight: 900; 
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      margin-bottom: 12px;
+    }
+    .hero p { font-size: 1.3rem; opacity: 0.95; margin-bottom: 20px; }
+    .hero .code-box { 
+      display: inline-block; 
+      margin-top: 16px; 
+      padding: 20px 40px; 
+      background: rgba(255,255,255,0.25);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 16px; 
+      font-size: 1.8rem; 
+      font-weight: 800;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    
+    /* Content */
+    .content { max-width: 1280px; margin: 0 auto; padding: 60px 24px; }
+    .section-title { 
+      font-size: 1.8rem; 
+      font-weight: 800; 
+      margin-bottom: 32px; 
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title i { color: var(--primary); }
+    
+    /* Deals Grid */
+    .deals-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+      gap: 28px; 
+      margin-bottom: 60px; 
+    }
+    .deal-card { 
+      background: #fff; 
+      border-radius: 24px; 
+      overflow: hidden; 
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1); 
+      position: relative; 
+      transition: all 0.3s ease;
+    }
+    .deal-card:hover { 
+      transform: translateY(-8px); 
+      box-shadow: 0 20px 50px rgba(232,100,26,0.2);
+    }
+    .deal-badge { 
+      position: absolute; 
+      top: 16px; 
+      left: 16px; 
+      padding: 10px 20px; 
+      background: var(--danger); 
+      color: #fff; 
+      border-radius: 12px; 
+      font-weight: 800; 
+      font-size: 0.9rem;
+      z-index: 2;
+      box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+    }
+    .deal-badge.hot { 
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      box-shadow: 0 4px 15px rgba(232,100,26,0.4);
+    }
+    .deal-badge.new { background: var(--dark); box-shadow: 0 4px 15px rgba(27,45,91,0.4); }
+    .deal-badge.free { background: var(--success); box-shadow: 0 4px 15px rgba(0,177,106,0.4); }
+    
+    .deal-image { 
+      height: 200px; 
+      background: linear-gradient(135deg, #f8f9fa 0%, #e5e7eb 100%);
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      position: relative;
+    }
+    .deal-image::after {
+      content:'';
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at center, rgba(232,100,26,0.1), transparent 70%);
+    }
+    .deal-image i { 
+      font-size: 5rem; 
+      color: var(--gray-300); 
+      position: relative;
+      z-index: 1;
+    }
+    .deal-body { padding: 28px; }
+    .deal-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; color: var(--dark); }
+    .deal-desc { color: var(--gray-500); margin-bottom: 20px; font-size: 1rem; }
+    .deal-code { 
+      background: linear-gradient(135deg, var(--primary), var(--primary-light)); 
+      padding: 14px 20px; 
+      border-radius: 12px; 
+      font-size: 1.1rem; 
+      font-weight: 800; 
+      margin-bottom: 20px;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(232,100,26,0.3);
+    }
+    .deal-btn { 
+      display: block; 
+      width: 100%; 
+      padding: 16px; 
+      background: var(--dark); 
+      color: #fff; 
+      border-radius: 14px; 
+      font-weight: 700; 
+      font-size: 1.1rem;
+      text-align: center; 
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(27,45,91,0.3);
+    }
+    .deal-btn:hover { 
+      background: var(--primary); 
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(232,100,26,0.4);
+    }
+    
+    /* Banner Ad */
+    .banner-ad { 
+      background: linear-gradient(135deg, var(--dark), #2a3f6a); 
+      border-radius: 24px; 
+      padding: 60px 40px; 
+      text-align: center; 
+      color: #fff; 
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(27,45,91,0.3);
+    }
+    .banner-ad::before {
+      content:'🎉';
+      position:absolute;
+      font-size:10rem;
+      opacity:0.15;
+      left:-20px;
+      top:50%;
+      transform:translateY(-50%);
+    }
+    .banner-ad::after {
+      content:'🎊';
+      position:absolute;
+      font-size:8rem;
+      opacity:0.15;
+      right:-20px;
+      bottom:-20px;
+    }
+    .banner-ad h2 { font-size: 2.5rem; margin-bottom: 16px; }
+    .banner-ad p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 24px; }
+    .banner-ad .offer { 
+      font-size: 4rem; 
+      font-weight: 900; 
+      color: var(--primary-light);
+      text-shadow: 0 4px 30px rgba(255,159,90,0.5);
+    }
+    .banner-ad .deal-btn {
+      width: auto;
+      display: inline-block;
+      padding: 18px 50px;
+    }
+    
+    /* Vouchers */
+    .vouchers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    .voucher-card { 
+      background: #fff; 
+      border: 3px dashed var(--primary); 
+      border-radius: 20px; 
+      padding: 32px; 
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(232,100,26,0.15);
+      transition: all 0.3s ease;
+    }
+    .voucher-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 40px rgba(232,100,26,0.25);
+    }
+    .voucher-card .discount { font-size: 3rem; font-weight: 900; color: var(--primary); }
+    .voucher-card .code { 
+      background: var(--gray-100); 
+      padding: 14px; 
+      border-radius: 10px; 
+      margin: 20px 0; 
+      font-weight: 700; 
+      font-size: 1.1rem;
+    }
+    
+    /* Footer */
+    .footer { background: var(--dark); color: #fff; padding: 50px 24px 24px; text-align: center; }
+    .footer p { opacity: 0.6; }
+    
+    @media (max-width: 768px) { 
+      .deals-grid { grid-template-columns: 1fr; }
+      .hero .code-box { font-size: 1.4rem; padding: 16px 24px; }
+      .banner-ad .offer { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/img/lelocal-removebg-preview.png" alt="Le Local" class="logo-img">
+      <span class="logo-text">Le Local</span>
+    </a>
+    <a href="index.html" class="back-btn"><i class="fas fa-shopping-bag"></i> Shop Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div style="font-size:4rem;margin-bottom:16px">🔥</div>
+  <h1>Special Deals</h1>
+  <p>Best prices on alcohol, vapes & groceries in Leicester!</p>
+  <div class="code-box">
+    <div style="font-size:0.9rem;opacity:0.8;margin-bottom:4px">SAVE UP TO</div>
+    <div style="font-size:2rem">30% OFF</div>
+  </div>
+</section>
+
+<div class="content">
+  <h2 class="section-title"><i class="fas fa-fire"></i> Flash Sale</h2>
+  <div class="deals-grid">
+    <div class="deal-card">
+      <div class="deal-badge hot">🔥 HOT</div>
+      <div class="deal-image" style="background:linear-gradient(135deg,#fef3c7,#fde68a)"><i class="fas fa-beer" style="color:#d97706"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">25% Off All Beer & Cider</div>
+        <div class="deal-desc">Stella, Heineken, Guinness & more</div>
+        <div class="deal-code">Code: BEER25</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-badge hot">🔥 HOT</div>
+      <div class="deal-image" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)"><i class="fas fa-wind" style="color:#2563eb"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">30% Off Vapes</div>
+        <div class="deal-desc">Elf Bar, Lost Mary, Geek Bar</div>
+        <div class="deal-code">Code: VAPE30</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-badge new">NEW</div>
+      <div class="deal-image" style="background:linear-gradient(135deg,#fef3c7,#fcd34d)"><i class="fas fa-glass-whiskey" style="color:#b45309"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">20% Off Spirits</div>
+        <div class="deal-desc">Jack, Smirnoff, Bacardi & more</div>
+        <div class="deal-code">Code: SPIRIT20</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-badge free">🚚 FREE</div>
+      <div class="deal-image" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)"><i class="fas fa-truck" style="color:#059669"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">Free Delivery</div>
+        <div class="deal-desc">On orders over £15</div>
+        <div class="deal-code">Code: FREE15</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-image" style="background:linear-gradient(135deg,#fee2e2,#fecaca)"><i class="fas fa-utensils" style="color:#dc2626"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">Meal Deal - £4.99</div>
+        <div class="deal-desc">Any drink + any snack</div>
+        <div class="deal-code">Code: MEAL5</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-badge new">NEW</div>
+      <div class="deal-image" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)"><i class="fas fa-wine-bottle" style="color:#db2777"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">15% Off Wine</div>
+        <div class="deal-desc">Red, white, rosé & champagne</div>
+        <div class="deal-code">Code: WINE15</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-image" style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe)"><i class="fas fa-wine-bottle-alt" style="color:#4f46e5"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">10% Off All Grocery</div>
+        <div class="deal-desc">Milk, bread, eggs & more</div>
+        <div class="deal-code">Code: FOOD10</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-badge hot">🔥 HOT</div>
+      <div class="deal-image" style="background:linear-gradient(135deg,#fee2e2,#fecaca)"><i class="fas fa-smoking" style="color:#991b1b"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">15% Off Tobacco</div>
+        <div class="deal-desc">Cigarettes, rolling tobacco & more</div>
+        <div class="deal-code">Code: SMOKE15</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="banner-ad">
+    <h2>🎁 New Customer Offer</h2>
+    <p>New to Le Local? Get £5 off your first order!</p>
+    <div class="offer">£5 OFF</div>
+    <a href="index.html" class="deal-btn" style="width:auto;padding:14px 40px;margin:0 auto">Use Code: NEW5</a>
+  </div>
+  
+  <h2 class="section-title"><i class="fas fa-gift"></i> Buy One Get One Free</h2>
+  <div class="deals-grid">
+    <div class="deal-card">
+      <div class="deal-badge free">🎁 BOGO</div>
+      <div class="deal-image" style="background:linear-gradient(135deg,#fef3c7,#fde68a)"><i class="fas fa-wine-bottle" style="color:#d97706"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">BOGO - Soft Drinks</div>
+        <div class="deal-desc">Buy 2 Get 1 Free</div>
+        <div class="deal-code">Code: SOFT3</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-badge free">🎁 BOGO</div>
+      <div class="deal-image" style="background:linear-gradient(135deg,#e5e7eb,#d1d5db)"><i class="fas fa-cookie" style="color:#4b5563"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">BOGO - Crisps</div>
+        <div class="deal-desc">Buy 2 Get 1 Free</div>
+        <div class="deal-code">Code: CRISP3</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-badge free">🎁 BOGO</div>
+      <div class="deal-image" style="background:linear-gradient(135deg,#fee2e2,#fecaca)"><i class="fas fa-candy-bar" style="color:#dc2626"></i></div>
+      <div class="deal-body">
+        <div class="deal-title">BOGO - Chocolate</div>
+        <div class="deal-desc">Buy 2 Get 1 Free</div>
+        <div class="deal-code">Code: CHOC3</div>
+        <a href="index.html" class="deal-btn"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>&copy; 2025 Le Local. All rights reserved. Leicester, UK</p>
+</footer>
+
+</body>
+</html>

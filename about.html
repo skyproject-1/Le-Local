@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Le Local - Your trusted off licence & grocery delivery in Leicester">
+  <meta name="theme-color" content="#1B2D5B">
+  <title>About Us - Le Local</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Great+Vibes:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary: #E8641A;
+      --primary-dark: #c9531a;
+      --primary-light: #ff9f5a;
+      --dark: #1B2D5B;
+      --success: #00B16A;
+      --bg: #f8f9fa;
+      --white: #FFFFFF;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Figtree', sans-serif; background: var(--bg); color: var(--gray-900); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    
+    /* Header */
+    .header { background: #fff; padding: 16px 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-img { width: 56px; height: 56px; border-radius: 12px; }
+    .logo-text { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dark); }
+    .logo-text span { color: var(--primary); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-weight: 600; color: var(--gray-700); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
+    .back-btn { display: flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--dark); color: #fff; border-radius: 10px; font-weight: 600; }
+    .back-btn:hover { background: var(--primary); }
+    
+    /* Hero */
+    .hero { background: linear-gradient(135deg, var(--dark) 0%, #2a3f6a 100%); padding: 80px 24px; text-align: center; color: #fff; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 16px; }
+    .hero p { font-size: 1.2rem; opacity: 0.85; max-width: 600px; margin: 0 auto; }
+    
+    /* Content */
+    .content { max-width: 1200px; margin: 0 auto; padding: 60px 24px; }
+    .page-title { font-size: 2rem; font-weight: 800; margin-bottom: 32px; color: var(--dark); }
+    
+    /* About Section */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 60px; }
+    .about-text h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; color: var(--dark); }
+    .about-text p { color: var(--gray-700); margin-bottom: 16px; }
+    .about-image { background: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .about-image img { border-radius: 16px; }
+    
+    /* Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 60px; }
+    .stat-card { background: #fff; border-radius: 16px; padding: 32px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .stat-number { font-size: 3rem; font-weight: 900; color: var(--primary); }
+    .stat-label { font-size: 1rem; color: var(--gray-500); font-weight: 600; }
+    
+    /* Values */
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; }
+    .value-card { background: #fff; border-radius: 16px; padding: 32px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .value-icon { width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; color: #fff; }
+    .value-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
+    .value-card p { color: var(--gray-600); }
+    
+    /* Footer */
+    .footer { background: var(--dark); color: #fff; padding: 60px 24px 32px; margin-top: 60px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand h3 { font-family: 'Great Vibes', cursive; font-size: 2rem; margin-bottom: 12px; }
+    .footer-brand p { opacity: 0.7; font-size: 0.95rem; }
+    .footer-col h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 12px; }
+    .footer-col a { opacity: 0.7; font-size: 0.95rem; transition: opacity 0.2s; }
+    .footer-col a:hover { opacity: 1; }
+    .footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; opacity: 0.5; font-size: 0.9rem; }
+    
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid, .stats-grid, .values-grid, .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/img/lelocal-removebg-preview.png" alt="Le Local" class="logo-img">
+      <span class="logo-text"><span class="logo-text">Le Local</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+      <a href="delivery.html">Delivery</a>
+    </nav>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Shop</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>About Le Local</h1>
+  <p>Leicester's trusted off licence & grocery delivery. Fast, reliable, and always fresh.</p>
+</section>
+
+<div class="content">
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>Our Story</h2>
+      <p>Le Local was founded with a simple mission: to bring Leicester the best off licence and grocery delivery experience in the city.</p>
+      <p>We believe everyone deserves quick access to quality drinks, snacks, and everyday essentials - without leaving home. That's why we launched Le Local to deliver your favourite products straight to your door in just 20-30 minutes.</p>
+      <p>As a local Leicester business, we're proud to serve our community with the fastest delivery times, best prices, and exceptional customer service.</p>
+      <p>Our team is fully trained in age verification to ensure responsible alcohol sales, and we're licensed to deliver alcohol in Leicester.</p>
+    </div>
+    <div class="about-image">
+      <img src="assets/img/lelocal-removebg-preview.png" alt="Le Local">
+    </div>
+  </div>
+  
+  <h2 class="page-title">Why Choose Le Local?</h2>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon"><i class="fas fa-bolt"></i></div>
+      <h3>Fast Delivery</h3>
+      <p>Your order delivered in 20-30 minutes. Open late, every day.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon"><i class="fas fa-id-card"></i></div>
+      <h3>Age Verified</h3>
+      <p>Fully licensed for alcohol delivery. We verify all ages.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon"><i class="fas fa-heart"></i></div>
+      <h3>Local Business</h3>
+      <p>Proudly serving Leicester since 2024.</p>
+    </div>
+  </div>
+  
+  <h2 class="page-title">Our Numbers</h2>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">20-30</div>
+      <div class="stat-label">Min Delivery</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">200+</div>
+      <div class="stat-label">Products</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Open Hours</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">18+</div>
+      <div class="stat-label">Age Verified</div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Le Local</h3>
+      <p>Leicester's trusted off licence & grocery delivery. Fast, reliable, age-verified alcohol delivery in 20-30 minutes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="delivery.html">Delivery Areas</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Le Local. All rights reserved. Leicester, UK
+  </div>
+</footer>
+
+</body>
+</html>

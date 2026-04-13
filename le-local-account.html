@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Local — Account</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --cream:#FAF7F2; --cream2:#F5F0E8; --cream3:#EDE5D8;
+  --ivory:#FDFBF8;
+  --orange:#D95D1A; --orange2:#F06A20; --orange3:#FFE4D0; --orange4:#FFF1E8;
+  --navy:#0E1C3B;  --navy2:#1A2E56;
+  --green:#1E7A4A; --green2:#D4EDE0; --green3:#F0FBF5;
+  --red:#C53030;   --red2:#FFF0F0;
+  --amber:#B45309; --amber2:#FFF8E1;
+  --ink:#181410;   --ink2:#3D3530;
+  --muted:#7A6F65; --muted2:#A09690;
+  --border:#E0D8CC; --border2:#C8BFB2;
+  --white:#FFFFFF;
+  --shadow:rgba(14,28,59,.07);
+  --shadow2:rgba(14,28,59,.13);
+  --shadow3:rgba(14,28,59,.22);
+  --r-sm:10px; --r-md:18px; --r-lg:26px; --r-xl:38px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh;cursor:none;overflow-x-hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;border:none;cursor:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--cream2)}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px}
+
+#dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:multiply}
+#ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1.5px solid var(--orange);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;opacity:.45}
+body.hov #dot{width:13px;height:13px;background:var(--navy)}
+body.hov #ring{width:50px;height:50px;opacity:.85;border-color:var(--navy)}
+
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:700;
+  height:68px;padding:0 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(250,247,242,.94);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 16px var(--shadow);
+}
+.n-logo{display:flex;align-items:center;gap:10px}
+.n-mark{width:36px;height:36px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;box-shadow:0 4px 14px rgba(217,93,26,.32)}
+.n-name{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--ink);letter-spacing:-.4px}
+.n-name em{color:var(--orange);font-style:normal}
+.n-right{display:flex;align-items:center;gap:10px}
+.n-lnk{padding:8px 16px;border-radius:50px;font-size:.84rem;font-weight:600;color:var(--muted);transition:all .2s}
+.n-lnk:hover{color:var(--ink);background:var(--cream2)}
+.n-btn{display:flex;align-items:center;gap:7px;padding:10px 22px;border-radius:50px;font-size:.85rem;font-weight:700;background:var(--navy);color:#fff;transition:all .2s;box-shadow:0 4px 16px var(--shadow2)}
+.n-btn:hover{background:var(--navy2);transform:translateY(-1px)}
+
+.page{display:none;min-height:100vh;padding-top:68px}
+.page.active{display:flex}
+
+.auth-page{
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 520px;
+  min-height:calc(100vh - 68px);
+}
+
+.auth-left{
+  background:var(--navy);
+  padding:64px 56px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.auth-left::before{content:'';position:absolute;top:-120px;right:-120px;width:480px;height:480px;background:radial-gradient(circle,rgba(217,93,26,.14) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.auth-left::after{content:'';position:absolute;bottom:-100px;left:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(27,45,91,.6) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.al-inner{position:relative;z-index:1}
+.al-sup{display:inline-flex;align-items:center;gap:8px;background:rgba(217,93,26,.18);padding:6px 14px;border-radius:50px;font-size:.72rem;font-weight:800;color:var(--orange2);text-transform:uppercase;letter-spacing:1px;margin-bottom:28px}
+.al-h{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:800;color:#fff;line-height:1;letter-spacing:-1.5px;margin-bottom:18px}
+.al-h em{color:var(--orange2);font-style:normal}
+.al-p{font-size:.95rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:360px;margin-bottom:44px}
+.al-feats{display:flex;flex-direction:column;gap:14px}
+.al-feat{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-md);padding:16px 18px}
+.af-ico{width:38px;height:38px;border-radius:10px;background:rgba(217,93,26,.18);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--orange2);flex-shrink:0}
+.af-t{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:2px}
+.af-s{font-size:.74rem;color:rgba(255,255,255,.38)}
+.al-badge{margin-top:44px;display:inline-flex;align-items:center;gap:10px;background:var(--orange);padding:14px 22px;border-radius:50px;box-shadow:0 8px 28px rgba(217,93,26,.35)}
+.ab-dot{width:9px;height:9px;background:#fff;border-radius:50%;animation:blink 1.8s ease-in-out infinite;box-shadow:0 0 6px #fff}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.al-badge span{font-size:.85rem;font-weight:700;color:#fff}
+
+.auth-right{
+  background:var(--ivory);
+  padding:52px 48px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid var(--border);
+  overflow-y:auto;
+}
+.ar-top{margin-bottom:36px}
+.ar-title{font-family:'Syne',sans-serif;font-size:1.75rem;font-weight:800;color:var(--ink);letter-spacing:-.8px;margin-bottom:6px}
+.ar-sub{font-size:.9rem;color:var(--muted)}
+.ar-sub a{color:var(--orange);font-weight:600}
+.ar-sub a:hover{text-decoration:underline}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{margin-bottom:18px;position:relative}
+.fg label{display:block;font-size:.78rem;font-weight:700;color:var(--ink2);margin-bottom:7px;text-transform:uppercase;letter-spacing:.6px}
+.fg input,.fg select{
+  width:100%;padding:14px 16px 14px 46px;
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  font-family:'DM Sans',sans-serif;
+  font-size:.93rem;color:var(--ink);
+  transition:border-color .2s,box-shadow .2s;
+  -webkit-appearance:none;
+}
+.fg input:focus,.fg select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(217,93,26,.1)}
+.fg input::placeholder{color:var(--muted2)}
+.fg input.err{border-color:var(--red)}
+.fg input.ok{border-color:var(--green)}
+.fg-ico{position:absolute;left:16px;bottom:15px;color:var(--muted2);font-size:.92rem;pointer-events:none;transition:color .2s}
+.fg:focus-within .fg-ico{color:var(--orange)}
+.fg-eye{position:absolute;right:14px;bottom:14px;width:28px;height:28px;background:none;border:none;color:var(--muted2);font-size:.9rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:color .2s}
+.fg-eye:hover{color:var(--ink)}
+.fg-hint{font-size:.73rem;color:var(--muted);margin-top:5px;display:flex;align-items:center;gap:5px}
+.fg-hint.ok{color:var(--green)} .fg-hint.err{color:var(--red)}
+
+.pw-bars{display:flex;gap:4px;margin-top:8px}
+.pw-bar{height:3px;flex:1;background:var(--border);border-radius:2px;transition:background .3s}
+.pw-bar.weak{background:var(--red)}
+.pw-bar.fair{background:var(--amber)}
+.pw-bar.strong{background:var(--green)}
+.pw-label{font-size:.72rem;margin-top:5px;font-weight:600;color:var(--muted)}
+.pw-label.weak{color:var(--red)}.pw-label.fair{color:var(--amber)}.pw-label.strong{color:var(--green)}
+
+.fg-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:18px}
+.fg-check input[type=checkbox]{width:18px;height:18px;accent-color:var(--orange);cursor:pointer;margin-top:1px;flex-shrink:0}
+.fg-check span{font-size:.83rem;color:var(--muted);line-height:1.55}
+.fg-check span a{color:var(--orange);font-weight:600}
+
+.phone-wrap{display:flex;gap:10px}
+.phone-flag{
+  width:72px;flex-shrink:0;
+  padding:14px 10px;
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.88rem;font-weight:700;color:var(--ink2);
+  gap:4px;
+}
+.phone-wrap .fg{flex:1;margin-bottom:0}
+
+.btn-submit{
+  width:100%;padding:16px;
+  background:var(--orange);color:#fff;
+  border-radius:var(--r-md);
+  font-family:'Syne',sans-serif;
+  font-size:1rem;font-weight:800;
+  letter-spacing:-.3px;
+  transition:all .22s;
+  box-shadow:0 6px 24px rgba(217,93,26,.32);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  position:relative;overflow:hidden;
+}
+.btn-submit::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transform:translateX(-100%);transition:transform .5s}
+.btn-submit:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 10px 36px rgba(217,93,26,.42)}
+.btn-submit:hover::after{transform:translateX(100%)}
+.btn-submit:active{transform:translateY(0)}
+
+.or-div{display:flex;align-items:center;gap:14px;margin:22px 0;color:var(--muted2);font-size:.8rem;font-weight:600}
+.or-div::before,.or-div::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.social-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.s-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px;background:#fff;
+  border:1.5px solid var(--border);border-radius:var(--r-md);
+  font-size:.85rem;font-weight:700;color:var(--ink2);
+  transition:all .2s;
+}
+.s-btn:hover{border-color:var(--border2);background:var(--cream);transform:translateY(-1px);box-shadow:0 4px 16px var(--shadow)}
+
+.forgot-link{text-align:right;margin-bottom:20px}
+.forgot-link a{font-size:.8rem;color:var(--orange);font-weight:600}
+.forgot-link a:hover{text-decoration:underline}
+
+.otp-row{display:flex;gap:10px;justify-content:center;margin:20px 0}
+.otp-box{
+  width:52px;height:60px;
+  text-align:center;
+  font-family:'Syne',sans-serif;
+  font-size:1.4rem;font-weight:800;color:var(--ink);
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  transition:border-color .2s,box-shadow .2s;
+}
+.otp-box:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(217,93,26,.1)}
+
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--ink);color:#fff;
+  padding:13px 24px;border-radius:50px;
+  font-size:.86rem;font-weight:600;
+  display:flex;align-items:center;gap:9px;
+  z-index:9000;transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 8px 32px rgba(0,0,0,.2);
+  white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.success i{color:var(--green)}
+.toast.error i{color:#FF8080}
+
+.wallet-page{
+  width:100%;padding:40px 48px 80px;
+  background:var(--cream);
+}
+.wp-in{max-width:1200px;margin:0 auto}
+
+.wp-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:36px;flex-wrap:wrap;gap:16px;
+}
+.wp-title{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-1px;color:var(--ink)}
+.wp-title em{color:var(--orange);font-style:normal}
+.wp-user{display:flex;align-items:center;gap:12px}
+.wp-av{
+  width:44px;height:44px;background:linear-gradient(135deg,var(--orange),var(--orange2));
+  border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff;
+  box-shadow:0 4px 14px rgba(217,93,26,.3);flex-shrink:0;
+}
+.wp-uname{font-size:.9rem;font-weight:700;color:var(--ink)}
+.wp-uloc{font-size:.74rem;color:var(--muted);margin-top:1px}
+
+.wallet-bento{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:auto auto auto;
+  gap:16px;
+}
+
+.w-balance{
+  grid-column:1/3;
+  background:var(--navy);
+  border-radius:var(--r-xl);
+  padding:44px 48px;
+  position:relative;overflow:hidden;
+}
+.w-balance::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(217,93,26,.18) 0%,transparent 70%);border-radius:50%}
+.w-balance::after{content:'';position:absolute;bottom:-60px;left:60px;width:240px;height:240px;background:radial-gradient(circle,rgba(27,45,91,.8) 0%,transparent 70%);border-radius:50%}
+.wb-inner{position:relative;z-index:1}
+.wb-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.wb-label::before{content:'';width:6px;height:6px;background:var(--orange2);border-radius:50%;animation:blink 2s infinite}
+.wb-amount{
+  font-family:'Syne',sans-serif;font-size:clamp(3rem,6vw,5rem);
+  font-weight:800;color:#fff;letter-spacing:-3px;line-height:1;
+  margin-bottom:6px;
+}
+.wb-amount em{font-size:2rem;color:var(--orange2);font-style:normal;vertical-align:top;margin-top:.6rem;display:inline-block}
+.wb-sub{font-size:.84rem;color:rgba(255,255,255,.4);margin-bottom:36px}
+.wb-actions{display:flex;gap:12px;flex-wrap:wrap}
+.wb-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:13px 22px;border-radius:50px;
+  font-size:.86rem;font-weight:700;
+  transition:all .2s;cursor:pointer;
+}
+.wb-btn-primary{background:var(--orange);color:#fff;box-shadow:0 6px 20px rgba(217,93,26,.35)}
+.wb-btn-primary:hover{background:var(--orange2);transform:translateY(-2px)}
+.wb-btn-ghost{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8)}
+.wb-btn-ghost:hover{background:rgba(255,255,255,.12)}
+.wb-card-deco{
+  position:absolute;bottom:32px;right:44px;
+  font-family:'Syne',sans-serif;
+  font-size:.82rem;font-weight:700;
+  color:rgba(255,255,255,.15);
+  letter-spacing:4px;z-index:1;
+}
+
+.w-stat{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:28px 30px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:140px;
+  transition:all .25s;
+}
+.w-stat:hover{box-shadow:0 10px 32px var(--shadow2);transform:translateY(-3px)}
+.ws-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.ws-ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.ws-trend{font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:20px}
+.t-up{background:var(--green2);color:var(--green)}
+.t-down{background:var(--red2);color:var(--red)}
+.t-neu{background:var(--cream3);color:var(--muted)}
+.ws-val{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--ink);letter-spacing:-1px;line-height:1;margin-bottom:4px}
+.ws-val em{color:var(--orange);font-style:normal}
+.ws-lbl{font-size:.74rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+
+.w-topup{
+  background:var(--orange3);
+  border:1px solid rgba(217,93,26,.18);
+  border-radius:var(--r-lg);
+  padding:28px 30px;
+  grid-column:3;grid-row:1;
+}
+.wt-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:6px}
+.wt-sub{font-size:.8rem;color:var(--muted);margin-bottom:20px;line-height:1.5}
+.topup-amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.ta{
+  padding:10px 6px;
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  text-align:center;font-family:'Syne',sans-serif;
+  font-size:.88rem;font-weight:800;color:var(--ink);
+  cursor:pointer;transition:all .18s;
+}
+.ta:hover,.ta.sel{background:var(--orange);border-color:var(--orange);color:#fff;transform:scale(1.04)}
+.topup-input-wrap{position:relative;margin-bottom:12px}
+.topup-input-wrap input{
+  width:100%;padding:13px 16px 13px 36px;
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  font-family:'Syne',sans-serif;
+  font-size:1rem;font-weight:700;color:var(--ink);
+  transition:border-color .2s;
+}
+.topup-input-wrap input:focus{outline:none;border-color:var(--orange)}
+.topup-input-wrap .ti-sym{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-family:'Syne',sans-serif;font-weight:800;color:var(--muted);font-size:.95rem}
+.btn-topup{width:100%;padding:13px;background:var(--orange);color:#fff;border-radius:var(--r-md);font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;transition:all .2s;box-shadow:0 4px 16px rgba(217,93,26,.28)}
+.btn-topup:hover{background:var(--orange2);transform:translateY(-2px)}
+
+.w-transactions{
+  grid-column:1/3;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+}
+.wtr-head{
+  padding:22px 28px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.wtr-head h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--ink)}
+.wtr-filter{display:flex;gap:6px}
+.wf-btn{padding:6px 14px;border-radius:50px;font-size:.76rem;font-weight:700;background:none;color:var(--muted);transition:all .18s;cursor:pointer}
+.wf-btn.active,.wf-btn:hover{background:var(--orange3);color:var(--orange)}
+.tx-list{padding:8px 0}
+.tx-item{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 28px;
+  border-bottom:1px solid var(--cream2);
+  transition:background .18s;cursor:default;
+}
+.tx-item:last-child{border-bottom:none}
+.tx-item:hover{background:var(--cream)}
+.tx-ico{
+  width:42px;height:42px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.05rem;flex-shrink:0;
+}
+.tx-ico.spend{background:var(--orange3);color:var(--orange)}
+.tx-ico.topup{background:var(--green2);color:var(--green)}
+.tx-ico.refund{background:var(--amber2);color:var(--amber)}
+.tx-info{flex:1}
+.tx-name{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:2px}
+.tx-meta{font-size:.74rem;color:var(--muted)}
+.tx-right{text-align:right}
+.tx-amount{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;letter-spacing:-.3px}
+.tx-amount.minus{color:var(--orange)}
+.tx-amount.plus{color:var(--green)}
+.tx-status{font-size:.71rem;font-weight:600;margin-top:2px;padding:2px 8px;border-radius:20px;display:inline-block}
+.st-done{background:var(--green2);color:var(--green)}
+.st-pend{background:var(--cream3);color:var(--muted)}
+.st-ref{background:var(--amber2);color:var(--amber)}
+
+.w-promo{
+  grid-column:3;grid-row:2/4;
+  display:flex;flex-direction:column;gap:14px;
+}
+.promo-card{
+  background:var(--navy2);
+  border-radius:var(--r-lg);
+  padding:28px;
+  position:relative;overflow:hidden;
+  flex:1;
+}
+.promo-card::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(217,93,26,.2) 0%,transparent 70%);border-radius:50%}
+.pc-inner{position:relative;z-index:1}
+.pc-ico{width:44px;height:44px;background:rgba(217,93,26,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--orange2);margin-bottom:16px}
+.pc-t{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin-bottom:6px}
+.pc-s{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:18px}
+.pc-code{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r-md);padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;
+}
+.pc-code span{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;color:#fff;letter-spacing:2px}
+.btn-copy{background:var(--orange);color:#fff;padding:7px 14px;border-radius:8px;font-size:.74rem;font-weight:700;cursor:pointer;transition:background .18s}
+.btn-copy:hover{background:var(--orange2)}
+.pc-reward{font-size:.78rem;color:rgba(255,255,255,.4);text-align:center}
+
+.loyalty-card{
+  background:linear-gradient(135deg,var(--orange3),var(--cream2));
+  border:1px solid rgba(217,93,26,.18);
+  border-radius:var(--r-lg);
+  padding:24px;
+}
+.lc-t{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;color:var(--ink);margin-bottom:6px}
+.lc-s{font-size:.78rem;color:var(--muted);margin-bottom:18px}
+.lc-stars{display:flex;gap:6px;margin-bottom:12px}
+.lc-star{
+  flex:1;height:8px;border-radius:4px;
+  background:var(--border);overflow:hidden;position:relative;
+}
+.lc-star.filled::after{content:'';position:absolute;inset:0;background:var(--orange);border-radius:4px}
+.lc-star.half::after{content:'';position:absolute;inset:0;width:50%;background:var(--orange);border-radius:4px}
+.lc-label{font-size:.76rem;color:var(--muted);font-weight:600}
+.lc-label em{color:var(--orange);font-style:normal;font-weight:800}
+
+.w-spend{
+  grid-column:1/3;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:28px 30px;
+}
+.ws-chart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.wsch-t{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--ink)}
+.wsch-period{display:flex;gap:6px}
+.period-btn{padding:5px 14px;border-radius:50px;font-size:.74rem;font-weight:700;background:none;color:var(--muted);cursor:pointer;transition:all .18s}
+.period-btn.active{background:var(--orange3);color:var(--orange)}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:90px}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.bar-fill{
+  width:100%;border-radius:6px 6px 0 0;
+  background:linear-gradient(180deg,var(--orange2),var(--orange));
+  min-height:4px;transition:height .6s cubic-bezier(.34,1.56,.64,1);
+  position:relative;cursor:pointer;
+}
+.bar-fill:hover::after{content:attr(data-val);position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:3px 8px;border-radius:6px;font-size:.68rem;font-weight:700;white-space:nowrap}
+.bar-fill.dim{background:linear-gradient(180deg,var(--cream3),var(--border))}
+.bar-lbl{font-size:.64rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+
+.fade-in{animation:fadeIn .5s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.d1{animation-delay:.08s}.d2{animation-delay:.14s}.d3{animation-delay:.2s}
+.d4{animation-delay:.26s}.d5{animation-delay:.32s}.d6{animation-delay:.38s}
+
+@media(max-width:1100px){
+  .wallet-bento{grid-template-columns:1fr 1fr}
+  .w-balance{grid-column:1/3}
+  .w-topup{grid-column:1;grid-row:auto}
+  .w-transactions{grid-column:1/3}
+  .w-promo{grid-column:2;grid-row:2/4;flex-direction:column}
+  .w-spend{grid-column:1/3}
+}
+@media(max-width:860px){
+  .nav{padding:0 20px}
+  .n-links-desk{display:none}
+  .auth-page{grid-template-columns:1fr}
+  .auth-left{display:none}
+  .auth-right{border-left:none;padding:40px 28px}
+  .wallet-page{padding:28px 20px 60px}
+  .wallet-bento{grid-template-columns:1fr}
+  .w-balance,.w-transactions,.w-spend,.w-topup,.w-promo{grid-column:auto}
+  .w-promo{flex-direction:row;gap:14px}
+  .form-row{grid-template-columns:1fr}
+  .social-btns{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  body{cursor:auto}
+  #dot,#ring{display:none}
+  .auth-right{padding:28px 18px}
+  .otp-row{gap:6px}
+  .otp-box{width:42px;height:52px;font-size:1.2rem}
+  .topup-amounts{grid-template-columns:repeat(3,1fr)}
+  .w-promo{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div id="dot"></div>
+<div id="ring"></div>
+
+<nav class="nav">
+  <a class="n-logo" href="index.html">
+    <img src="assets/img/lelocal-removebg-preview.png" alt="Le Local" style="width:36px;height:36px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="n-mark" style="display:none">🏪</div>
+    <div class="n-name">Le <em>Local</em></div>
+  </a>
+  <div class="n-right n-links-desk">
+    <a class="n-lnk" href="index.html"><i class="fas fa-store"></i> Shop</a>
+    <a class="n-lnk" href="index.html">Home</a>
+    <div id="navAuthBtns" style="display:flex;gap:8px">
+      <button class="n-lnk" onclick="showPage('login')">Log In</button>
+      <button class="n-btn" onclick="showPage('register')"><i class="fas fa-user-plus"></i> Sign Up</button>
+    </div>
+    <div id="navWalletBtn" style="display:none">
+      <button class="n-btn" onclick="showPage('wallet')"><i class="fas fa-wallet"></i> My Wallet</button>
+    </div>
+  </div>
+</nav>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">Done!</span></div>
+
+<div class="page active" id="pg-login">
+  <div class="auth-page">
+    <div class="auth-left fade-in">
+      <div class="al-inner">
+        <div class="al-sup"><i class="fas fa-bolt"></i> Leicester's Fastest</div>
+        <h2 class="al-h">Welcome<br>back to<br><em>Le Local.</em></h2>
+        <p class="al-p">Sign in to access your wallet, track orders and unlock exclusive member deals — delivered in 20–30 minutes.</p>
+        <div class="al-feats">
+          <div class="al-feat">
+            <div class="af-ico"><i class="fas fa-wallet"></i></div>
+            <div><div class="af-t">Le Local Wallet</div><div class="af-s">Top up & pay instantly at checkout</div></div>
+          </div>
+          <div class="al-feat">
+            <div class="af-ico"><i class="fas fa-history"></i></div>
+            <div><div class="af-t">Order History</div><div class="af-s">Reorder your favourites in one tap</div></div>
+          </div>
+          <div class="al-feat">
+            <div class="af-ico"><i class="fas fa-gift"></i></div>
+            <div><div class="af-t">Member Rewards</div><div class="af-s">Earn points on every order</div></div>
+          </div>
+        </div>
+        <div class="al-badge">
+          <div class="ab-dot"></div>
+          <span>Delivering across Leicester right now</span>
+        </div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="ar-top fade-in">
+        <h1 class="ar-title">Sign in</h1>
+        <p class="ar-sub">New to Le Local? <a href="#" onclick="showPage('register');return false">Create a free account →</a></p>
+      </div>
+      <div class="social-btns fade-in d1">
+        <button class="s-btn"><img src="https://www.svgrepo.com/show/475656/google-color.svg" width="18" height="18" alt="G"> Continue with Google</button>
+        <button class="s-btn"><i class="fab fa-apple" style="font-size:1.1rem"></i> Continue with Apple</button>
+      </div>
+      <div class="or-div fade-in d2">or sign in with email</div>
+      <div class="fade-in d2">
+        <div class="fg">
+          <label>Email address</label>
+          <i class="fas fa-envelope fg-ico"></i>
+          <input type="email" id="loginEmail" placeholder="you@email.com" oninput="liveValidateEmail(this)">
+        </div>
+        <div class="fg" style="margin-bottom:8px">
+          <label>Password</label>
+          <i class="fas fa-lock fg-ico"></i>
+          <input type="password" id="loginPw" placeholder="Your password">
+          <button class="fg-eye" onclick="togglePw('loginPw',this)"><i class="fas fa-eye"></i></button>
+        </div>
+        <div class="forgot-link"><a href="#" onclick="showForgot();return false">Forgot password?</a></div>
+        <button class="btn-submit fade-in d3" onclick="doLogin()">
+          <i class="fas fa-sign-in-alt"></i> Sign In to Le Local
+        </button>
+      </div>
+      <div class="or-div fade-in d4" style="margin-top:20px"></div>
+      <p style="text-align:center;font-size:.8rem;color:var(--muted)" class="fade-in d5">
+        By signing in you agree to our <a href="#" style="color:var(--orange);font-weight:600">Terms of Service</a> &amp; <a href="#" style="color:var(--orange);font-weight:600">Privacy Policy</a>.<br>
+        You must be <strong>18+</strong> to use Le Local. 🔞
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="pg-register">
+  <div class="auth-page">
+    <div class="auth-left fade-in">
+      <div class="al-inner">
+        <div class="al-sup"><i class="fas fa-star"></i> Join Free Today</div>
+        <h2 class="al-h">Create your<br><em>Le Local</em><br>account.</h2>
+        <p class="al-p">Join thousands of Leicester locals enjoying fast delivery, a digital wallet, loyalty rewards and exclusive member deals.</p>
+        <div class="al-feats">
+          <div class="al-feat">
+            <div class="af-ico"><i class="fas fa-bolt"></i></div>
+            <div><div class="af-t">20–30 Min Delivery</div><div class="af-s">Always fast, always reliable</div></div>
+          </div>
+          <div class="al-feat">
+            <div class="af-ico"><i class="fas fa-coins"></i></div>
+            <div><div class="af-t">Earn Loyalty Points</div><div class="af-s">Every order gets you closer to rewards</div></div>
+          </div>
+          <div class="al-feat">
+            <div class="af-ico"><i class="fas fa-shield-alt"></i></div>
+            <div><div class="af-t">Secure & Private</div><div class="af-s">Your data is safe with us, always</div></div>
+          </div>
+        </div>
+        <div class="al-badge">
+          <div class="ab-dot"></div>
+          <span>Free to join — takes 60 seconds</span>
+        </div>
+      </div>
+    </div>
+    <div class="auth-right" style="padding-top:36px">
+      <div class="ar-top fade-in">
+        <h1 class="ar-title">Create account</h1>
+        <p class="ar-sub">Already have one? <a href="#" onclick="showPage('login');return false">Sign in here →</a></p>
+      </div>
+      <div class="social-btns fade-in d1">
+        <button class="s-btn"><img src="https://www.svgrepo.com/show/475656/google-color.svg" width="18" height="18" alt="G"> Sign up with Google</button>
+        <button class="s-btn"><i class="fab fa-apple" style="font-size:1.1rem"></i> Sign up with Apple</button>
+      </div>
+      <div class="or-div fade-in d1">or register with email</div>
+      <div class="fade-in d2">
+        <div class="form-row">
+          <div class="fg">
+            <label>First name</label>
+            <i class="fas fa-user fg-ico"></i>
+            <input type="text" id="regFirst" placeholder="James" oninput="liveValidateName(this)">
+          </div>
+          <div class="fg">
+            <label>Last name</label>
+            <i class="fas fa-user fg-ico"></i>
+            <input type="text" id="regLast" placeholder="Smith">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Email address</label>
+          <i class="fas fa-envelope fg-ico"></i>
+          <input type="email" id="regEmail" placeholder="you@email.com" oninput="liveValidateEmail(this)">
+        </div>
+        <div class="fg">
+          <label>Phone number</label>
+          <div class="phone-wrap">
+            <div class="phone-flag">🇬🇧 +44</div>
+            <div class="fg" style="margin-bottom:0">
+              <i class="fas fa-phone fg-ico"></i>
+              <input type="tel" id="regPhone" placeholder="7700 000000">
+            </div>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Delivery address</label>
+          <i class="fas fa-map-marker-alt fg-ico"></i>
+          <input type="text" id="regAddr" placeholder="Your full Leicester address + postcode">
+          <div class="fg-hint"><i class="fas fa-info-circle"></i> We only deliver within Leicester. Enter your address to confirm coverage.</div>
+        </div>
+        <div class="fg">
+          <label>Create password</label>
+          <i class="fas fa-lock fg-ico"></i>
+          <input type="password" id="regPw" placeholder="Min 8 characters" oninput="checkPwStrength(this)">
+          <button class="fg-eye" onclick="togglePw('regPw',this)"><i class="fas fa-eye"></i></button>
+          <div class="pw-bars" id="pwBars">
+            <div class="pw-bar" id="pb1"></div>
+            <div class="pw-bar" id="pb2"></div>
+            <div class="pw-bar" id="pb3"></div>
+          </div>
+          <div class="pw-label" id="pwLabel">Enter a password</div>
+        </div>
+        <div class="fg">
+          <label>Confirm password</label>
+          <i class="fas fa-lock fg-ico"></i>
+          <input type="password" id="regPw2" placeholder="Repeat password" oninput="checkPwMatch()">
+          <div class="fg-hint" id="pwMatchHint" style="display:none"></div>
+        </div>
+        <label class="fg-check">
+          <input type="checkbox" id="ageCheck">
+          <span>I confirm I am <strong>18 years of age or older</strong> and agree to the <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a> and <a href="#">Cookie Policy</a>. 🔞</span>
+        </label>
+        <label class="fg-check">
+          <input type="checkbox" id="marketingCheck">
+          <span>Send me exclusive deals, early access offers and delivery updates via email &amp; SMS. (Optional)</span>
+        </label>
+        <button class="btn-submit" onclick="doRegister()">
+          <i class="fas fa-user-plus"></i> Create My Free Account
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="pg-wallet">
+  <div class="wallet-page">
+    <div class="wp-in">
+      <div class="wp-header fade-in">
+        <div>
+          <h1 class="wp-title">My <em>Wallet</em></h1>
+          <p style="font-size:.88rem;color:var(--muted);margin-top:4px">Manage your balance, top up &amp; view transactions</p>
+        </div>
+        <div class="wp-user">
+          <div class="wp-av" id="walletInitials">JM</div>
+          <div>
+            <div class="wp-uname" id="walletName">James Mitchell</div>
+            <div class="wp-uloc"><i class="fas fa-map-marker-alt" style="color:var(--orange)"></i> LE3 · Leicester</div>
+          </div>
+          <button class="n-btn" onclick="doLogout()" style="margin-left:12px"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+      </div>
+      <div class="wallet-bento">
+        <div class="w-balance fade-in">
+          <div class="wb-inner">
+            <div class="wb-label">Available Balance</div>
+            <div class="wb-amount"><em>£</em><span id="walletBal">47.50</span></div>
+            <div class="wb-sub">Updated just now · LE Local Wallet</div>
+            <div class="wb-actions">
+              <button class="wb-btn wb-btn-primary" onclick="openTopup()"><i class="fas fa-plus"></i> Top Up</button>
+              <button class="wb-btn wb-btn-ghost" onclick="window.location.href='index.html'" style="cursor:pointer"><i class="fas fa-store"></i> Shop Now</button>
+              <button class="wb-btn wb-btn-ghost"><i class="fas fa-share-nodes"></i> Send</button>
+            </div>
+          </div>
+          <div class="wb-card-deco">LE LOCAL •••• 7823</div>
+        </div>
+        <div class="w-stat fade-in d1">
+          <div class="ws-top">
+            <div class="ws-ico" style="background:var(--orange3);color:var(--orange)"><i class="fas fa-shopping-basket"></i></div>
+            <div class="ws-trend t-up">↑ 12%</div>
+          </div>
+          <div class="ws-val"><em>£</em><span id="totalSpent">234.80</span></div>
+          <div class="ws-lbl">Total spent this month</div>
+        </div>
+        <div class="w-stat fade-in d2">
+          <div class="ws-top">
+            <div class="ws-ico" style="background:var(--green2);color:var(--green)"><i class="fas fa-receipt"></i></div>
+            <div class="ws-trend t-neu">— same</div>
+          </div>
+          <div class="ws-val"><span id="orderCount">18</span></div>
+          <div class="ws-lbl">Orders placed</div>
+        </div>
+        <div class="w-stat fade-in d3">
+          <div class="ws-top">
+            <div class="ws-ico" style="background:var(--amber2);color:var(--amber)"><i class="fas fa-coins"></i></div>
+            <div class="ws-trend t-up">↑ 45pts</div>
+          </div>
+          <div class="ws-val"><span id="loyaltyPts">380</span><em style="font-size:1rem"> pts</em></div>
+          <div class="ws-lbl">Loyalty points</div>
+        </div>
+        <div class="w-topup fade-in d2">
+          <div class="wt-title">Top Up Wallet</div>
+          <div class="wt-sub">Add funds instantly via card — used at checkout</div>
+          <div class="topup-amounts" id="topupAmounts">
+            <div class="ta" onclick="selectAmount(this,'5')">£5</div>
+            <div class="ta" onclick="selectAmount(this,'10')">£10</div>
+            <div class="ta" onclick="selectAmount(this,'20')">£20</div>
+            <div class="ta" onclick="selectAmount(this,'30')">£30</div>
+            <div class="ta" onclick="selectAmount(this,'50')">£50</div>
+            <div class="ta" onclick="selectAmount(this,'100')">£100</div>
+          </div>
+          <div class="topup-input-wrap">
+            <span class="ti-sym">£</span>
+            <input type="number" id="topupAmt" placeholder="Custom amount" min="1" max="500">
+          </div>
+          <button class="btn-topup" onclick="doTopup()"><i class="fas fa-bolt"></i> Add to Wallet</button>
+        </div>
+        <div class="w-transactions fade-in d1">
+          <div class="wtr-head">
+            <h3><i class="fas fa-clock" style="color:var(--orange);margin-right:8px"></i>Transaction History</h3>
+            <div class="wtr-filter">
+              <button class="wf-btn active" onclick="filterTx(this,'all')">All</button>
+              <button class="wf-btn" onclick="filterTx(this,'spend')">Spend</button>
+              <button class="wf-btn" onclick="filterTx(this,'topup')">Top-ups</button>
+              <button class="wf-btn" onclick="filterTx(this,'refund')">Refunds</button>
+            </div>
+          </div>
+          <div class="tx-list" id="txList"></div>
+        </div>
+        <div class="w-promo fade-in d3">
+          <div class="promo-card">
+            <div class="pc-inner">
+              <div class="pc-ico"><i class="fas fa-gift"></i></div>
+              <div class="pc-t">Refer a Friend</div>
+              <div class="pc-s">Share your code and earn £5 wallet credit for every friend who places their first order.</div>
+              <div class="pc-code">
+                <span id="referCode">LELOCAL-JM72</span>
+                <button class="btn-copy" onclick="copyCode()">Copy</button>
+              </div>
+              <div class="pc-reward">You + your friend both get <strong style="color:var(--orange2)">£5 credit</strong> 🎉</div>
+            </div>
+          </div>
+          <div class="loyalty-card">
+            <div class="lc-t">Loyalty Progress</div>
+            <div class="lc-s">380 pts — Gold tier. 120 pts to Platinum.</div>
+            <div class="lc-stars" id="loyaltyBars"></div>
+            <div class="lc-label">Next reward unlocks at <em>500 pts</em></div>
+          </div>
+        </div>
+        <div class="w-spend fade-in d2">
+          <div class="ws-chart-head">
+            <div class="wsch-t"><i class="fas fa-chart-bar" style="color:var(--orange);margin-right:8px"></i>Weekly Spending</div>
+            <div class="wsch-period">
+              <button class="period-btn active">Week</button>
+              <button class="period-btn">Month</button>
+              <button class="period-btn">Year</button>
+            </div>
+          </div>
+          <div class="bar-chart" id="barChart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API_BASE_URL = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1') 
+  ? 'http://localhost:5000' 
+  : 'https://lelocal-api-skyproject-1.onrender.com';
+
+const dot=document.getElementById('dot'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,input,label,.ta,.wf-btn,.period-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.className='toast show '+(type==='error'?'error':'success');
+  t.querySelector('i').className='fas fa-'+(type==='error'?'exclamation-circle':'check-circle');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('pg-'+name).classList.add('active');
+  window.scrollTo(0,0);
+  document.querySelectorAll('#pg-'+name+' .fade-in').forEach(el=>{
+    el.style.animation='none';el.offsetHeight;el.style.animation='';
+  });
+  if(name==='wallet') buildWallet();
+}
+
+function liveValidateEmail(el){
+  const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
+  el.classList.toggle('ok',ok&&el.value.length>0);
+  el.classList.toggle('err',!ok&&el.value.length>3);
+}
+function liveValidateName(el){
+  el.classList.toggle('ok',el.value.trim().length>=2);
+  el.classList.toggle('err',el.value.length>0&&el.value.trim().length<2);
+}
+
+function togglePw(id,btn){
+  const inp=document.getElementById(id);
+  const show=inp.type==='password';
+  inp.type=show?'text':'password';
+  btn.querySelector('i').className='fas fa-eye'+(show?'-slash':'');
+}
+function checkPwStrength(el){
+  const v=el.value;
+  const bars=[document.getElementById('pb1'),document.getElementById('pb2'),document.getElementById('pb3')];
+  const lbl=document.getElementById('pwLabel');
+  let score=0;
+  if(v.length>=8)score++;
+  if(/[A-Z]/.test(v)&&/[a-z]/.test(v))score++;
+  if(/[0-9]/.test(v)||/[^A-Za-z0-9]/.test(v))score++;
+  const levels=['','weak','fair','strong'];
+  const labels=['Enter a password','Weak — easy to guess','Fair — could be stronger','Strong — great password!'];
+  bars.forEach((b,i)=>{b.className='pw-bar'+(i<score?' '+levels[score]:'')});
+  lbl.className='pw-label'+(score>0?' '+levels[score]:'');
+  lbl.textContent=labels[score];
+}
+function checkPwMatch(){
+  const a=document.getElementById('regPw').value;
+  const b=document.getElementById('regPw2').value;
+  const hint=document.getElementById('pwMatchHint');
+  if(!b){hint.style.display='none';return}
+  hint.style.display='flex';
+  if(a===b){hint.className='fg-hint ok';hint.innerHTML='<i class="fas fa-check-circle"></i> Passwords match'}
+  else{hint.className='fg-hint err';hint.innerHTML='<i class="fas fa-times-circle"></i> Passwords do not match'}
+}
+
+async function doLogin(){
+  const email=document.getElementById('loginEmail').value.trim();
+  const pw=document.getElementById('loginPw').value;
+  if(!email||!pw){showToast('Please fill in all fields','error');return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Please enter a valid email','error');return}
+  
+  try {
+    const res = await fetch(`${API_BASE_URL}/users/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pw })
+    });
+    const data = await res.json();
+    
+    if (!res.ok) {
+      showToast(data.error || 'Login failed','error');
+      return;
+    }
+    
+    localStorage.setItem('leLocalSession', JSON.stringify(data.user));
+    showToast('Welcome back, '+data.user.firstName+'! 👋');
+    updateNavForUser(data.user);
+    setTimeout(()=>showPage('wallet'),900);
+  } catch (e) {
+    console.error(e);
+    showToast('Could not connect to server','error');
+  }
+}
+
+async function doRegister(){
+  const first=document.getElementById('regFirst').value.trim();
+  const last=document.getElementById('regLast').value.trim();
+  const email=document.getElementById('regEmail').value.trim();
+  const phone=document.getElementById('regPhone').value.trim();
+  const addr=document.getElementById('regAddr').value.trim();
+  const pw=document.getElementById('regPw').value;
+  const pw2=document.getElementById('regPw2').value;
+  const age=document.getElementById('ageCheck').checked;
+  
+  if(!first||!last||!email||!phone||!addr||!pw){showToast('Please fill in all required fields','error');return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Please enter a valid email address','error');return}
+  if(pw.length<8){showToast('Password must be at least 8 characters','error');return}
+  if(pw!==pw2){showToast('Passwords do not match','error');return}
+  if(!age){showToast('You must confirm you are 18+ to register','error');return}
+  
+  try {
+    const res = await fetch(`${API_BASE_URL}/users/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName: first, lastName: last, email, phone, address: addr, password: pw })
+    });
+    const data = await res.json();
+    
+    if (!res.ok) {
+      showToast(data.error || 'Registration failed','error');
+      return;
+    }
+    
+    const loginRes = await fetch(`${API_BASE_URL}/users/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pw })
+    });
+    const loginData = await loginRes.json();
+    
+    localStorage.setItem('leLocalSession', JSON.stringify(loginData.user));
+    showToast('Account created! Welcome to Le Local 🎉');
+    updateNavForUser(loginData.user);
+    setTimeout(()=>showPage('wallet'),1000);
+  } catch (e) {
+    console.error(e);
+    showToast('Could not connect to server','error');
+  }
+}
+
+function doLogout(){
+  localStorage.removeItem('leLocalSession');
+  showToast('You have been signed out');
+  document.getElementById('navAuthBtns').style.display='flex';
+  document.getElementById('navWalletBtn').style.display='none';
+  setTimeout(()=>showPage('login'),600);
+}
+
+function updateNavForUser(u){
+  document.getElementById('navAuthBtns').style.display='none';
+  document.getElementById('navWalletBtn').style.display='block';
+}
+
+function showForgot(){
+  showToast('Password reset link sent to your email 📧');
+}
+
+let txData = [];
+let currentFilter = 'all';
+let currentUser = null;
+
+async function buildWallet(){
+  currentUser = JSON.parse(localStorage.getItem('leLocalSession')||'null');
+  if(!currentUser) {
+    showPage('login');
+    return;
+  }
+  
+  if(currentUser.firstName){
+    document.getElementById('walletName').textContent=(currentUser.firstName+' '+(currentUser.lastName||'')).trim();
+    document.getElementById('walletInitials').textContent=(currentUser.firstName[0]+(currentUser.lastName?currentUser.lastName[0]:'')).toUpperCase();
+    document.getElementById('referCode').textContent='LELOCAL-'+currentUser.firstName.toUpperCase().slice(0,2)+(Math.floor(Math.random()*90)+10);
+  }
+  
+  document.getElementById('walletBal').textContent = (currentUser.wallet || 0).toFixed(2);
+  document.getElementById('totalSpent').textContent = '0.00';
+  document.getElementById('orderCount').textContent = '0';
+  document.getElementById('loyaltyPts').textContent = currentUser.points || 0;
+  
+  await fetchTransactions();
+  renderTx();
+  buildBars();
+  buildLoyalty();
+}
+
+async function fetchTransactions(){
+  if(!currentUser) return;
+  try {
+    const res = await fetch(`${API_BASE_URL}/users/wallet/transactions/${currentUser.id}`);
+    const data = await res.json();
+    if(data.transactions) {
+      txData = data.transactions.map(t => ({
+        type: t.type,
+        ico: t.type === 'topup' ? '💳' : t.type === 'spend' ? '🍺' : '↩️',
+        name: t.description || (t.type === 'topup' ? 'Wallet Top-Up' : 'Order'),
+        meta: 'Le Local',
+        amount: t.type === 'spend' ? -t.amount : t.amount,
+        date: new Date(t.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
+        status: 'done'
+      }));
+    }
+  } catch(e) {
+    console.error('Failed to fetch transactions:', e);
+    txData = [];
+  }
+}
+
+function renderTx(filter){
+  if(filter)currentFilter=filter;
+  const list=document.getElementById('txList');
+  const filtered=txData.filter(t=>currentFilter==='all'||t.type===currentFilter);
+  list.innerHTML=filtered.map(t=>`
+    <div class="tx-item">
+      <div class="tx-ico ${t.type}">${t.ico}</div>
+      <div class="tx-info">
+        <div class="tx-name">${t.name}</div>
+        <div class="tx-meta">${t.meta} · ${t.date}</div>
+      </div>
+      <div class="tx-right">
+        <div class="tx-amount ${t.amount<0?'minus':'plus'}">${t.amount<0?'−£'+Math.abs(t.amount).toFixed(2):'+£'+t.amount.toFixed(2)}</div>
+        <span class="tx-status ${t.status==='done'?'st-done':t.status==='pend'?'st-pend':'st-ref'}">${t.status==='done'?'Completed':t.status==='pend'?'Pending':'Refunded'}</span>
+      </div>
+    </div>
+  `).join('')||'<div style="padding:40px;text-align:center;color:var(--muted);font-size:.88rem">No transactions found</div>';
+}
+
+function filterTx(btn,f){
+  document.querySelectorAll('.wf-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTx(f);
+}
+
+const weekData=[{d:'Mon',v:12,a:12},{d:'Tue',v:0,a:0},{d:'Wed',v:29,a:29},{d:'Thu',v:15,a:15},{d:'Fri',v:45,a:45},{d:'Sat',v:38,a:38},{d:'Sun',v:22,a:22}];
+const maxV=Math.max(...weekData.map(d=>d.v));
+
+function buildBars(){
+  const chart=document.getElementById('barChart');
+  chart.innerHTML=weekData.map((d,i)=>`
+    <div class="bar-col">
+      <div class="bar-fill${i===4?' ':'  dim'}" style="height:${Math.max(4,(d.v/maxV)*82)}px;${i===4?'':'filter:none'}" data-val="£${d.v}.00" title="£${d.v}"></div>
+      <div class="bar-lbl">${d.d}</div>
+    </div>
+  `).join('');
+  chart.querySelectorAll('.bar-fill').forEach((b,i)=>{
+    if(i===4)b.classList.remove('dim');
+    else b.classList.add('dim');
+  });
+}
+
+function buildLoyalty(){
+  const pts = currentUser?.points || 0, max = 500;
+  const bars=document.getElementById('loyaltyBars');
+  const segments=10;
+  bars.innerHTML=Array.from({length:segments},(_,i)=>{
+    const filled=i<Math.floor((pts/max)*segments);
+    const half=!filled&&i===Math.floor((pts/max)*segments);
+    return `<div class="lc-star${filled?' filled':half?' half':''}"></div>`;
+  }).join('');
+}
+
+function selectAmount(el,val){
+  document.querySelectorAll('.ta').forEach(t=>t.classList.remove('sel'));
+  el.classList.add('sel');
+  document.getElementById('topupAmt').value=val;
+}
+
+async function doTopup(){
+  const amt=parseFloat(document.getElementById('topupAmt').value);
+  if(!amt||amt<1||amt>500){showToast('Please enter a valid amount (£1–£500)','error');return}
+  if(!currentUser){showToast('Please log in first','error');return}
+  
+  try {
+    showToast('Processing payment...','info');
+    
+    const res = await fetch(`${API_BASE_URL}/payments/wallet-topup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ user_id: currentUser.id, amount: amt })
+    });
+    const data = await res.json();
+    
+    if (!res.ok) {
+      showToast(data.error || 'Payment failed','error');
+      return;
+    }
+    
+    if (data.checkout_url) {
+      localStorage.setItem('pendingWalletTopup', JSON.stringify({
+        user_id: currentUser.id,
+        amount: amt
+      }));
+      window.location.href = data.checkout_url;
+      return;
+    }
+    
+    showToast('Payment processed','success');
+    currentUser.wallet = (currentUser.wallet || 0) + amt;
+    localStorage.setItem('leLocalSession', JSON.stringify(currentUser));
+    document.getElementById('walletBal').textContent = currentUser.wallet.toFixed(2);
+    txData.unshift({type:'topup',ico:'💳',name:'Wallet Top-Up',meta:'Card',amount:+amt,date:'Just now',status:'done'});
+    renderTx();
+    document.getElementById('topupAmt').value='';
+    document.querySelectorAll('.ta').forEach(t=>t.classList.remove('sel'));
+  } catch (e) {
+    console.error(e);
+    showToast('Could not connect to server','error');
+  }
+}
+
+function openTopup(){document.querySelector('.w-topup').scrollIntoView({behavior:'smooth',block:'center'})}
+
+function copyCode(){
+  const code=document.getElementById('referCode').textContent;
+  navigator.clipboard.writeText(code).catch(()=>{});
+  showToast('Referral code copied! 🎉');
+}
+
+document.addEventListener('click',e=>{
+  if(e.target.classList.contains('period-btn')){
+    document.querySelectorAll('.period-btn').forEach(b=>b.classList.remove('active'));
+    e.target.classList.add('active');
+  }
+});
+
+(function(){
+  const s=localStorage.getItem('leLocalSession');
+  if(s){
+    const u=JSON.parse(s);
+    currentUser = u;
+    updateNavForUser(u);
+    showPage('wallet');
+  }
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  if(urlParams.get('wallet_topup') === 'success'){
+    const pending = localStorage.getItem('pendingWalletTopup');
+    if(pending){
+      const data = JSON.parse(pending);
+      currentUser.wallet = (currentUser.wallet || 0) + data.amount;
+      localStorage.setItem('leLocalSession', JSON.stringify(currentUser));
+      localStorage.removeItem('pendingWalletTopup');
+      showToast('£' + data.amount.toFixed(2) + ' added to wallet!','success');
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,3120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Le Local - Fast off licence & grocery delivery in Leicester. Beer, spirits, wine, vapes, tobacco & groceries delivered in 20-30 minutes.">
+  <meta name="theme-color" content="#1B2D5B">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Le Local">
+  <link rel="apple-touch-icon" href="assets/img/lelocal-removebg-preview.png">
+  <!-- <link rel="manifest" href="manifest.json"> -->
+  <title>Le Local - Shop | Off Licence & Grocery Delivery</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Great+Vibes:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary: #E8641A;
+      --primary-dark: #c9531a;
+      --primary-light: #ff9f5a;
+      --dark: #1B2D5B;
+      --dark-light: #2a3f6a;
+      --dark-dark: #0f1a35;
+      --success: #00B16A;
+      --warning: #F59E0B;
+      --danger: #EF4444;
+      --bg: #F5F5F5;
+      --white: #FFFFFF;
+      --gray-50: #FAFAFA;
+      --gray-100: #F5F5F5;
+      --gray-200: #E5E5E5;
+      --gray-300: #D4D4D4;
+      --gray-400: #A3A3A3;
+      --gray-500: #737373;
+      --gray-700: #404040;
+      --gray-900: #171717;
+      --r-xl: 24px;
+      --r-lg: 20px;
+      --r-md: 16px;
+      --r-sm: 12px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+      --shadow-xl: 0 25px 50px -12px rgba(0,0,0,0.25);
+      --shadow-glow: 0 0 40px rgba(232, 100, 26, 0.3);
+      --shadow-glow-lg: 0 0 60px rgba(232, 100, 26, 0.4);
+    }
+    
+    /* World-Class Base Styles */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+    
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: var(--bg);
+      color: var(--gray-900);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* Smooth Scroll Snap */
+    .snap-container {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+    
+    /* Premium Grain Texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.02;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: 
+        radial-gradient(ellipse at 20% 20%, rgba(232, 100, 26, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(27, 45, 91, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 177, 106, 0.08) 0%, transparent 60%);
+      animation: bgShift 20s ease-in-out infinite;
+    }
+    @keyframes bgShift {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(3deg); }
+    }
+    
+    /* Floating Orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: -1;
+      animation: orbFloat 15s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(232, 100, 26, 0.12);
+      top: -100px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 300px;
+      height: 300px;
+      background: rgba(27, 45, 91, 0.15);
+      bottom: -50px;
+      left: -50px;
+      animation-delay: -5s;
+    }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0); }
+      33% { transform: translate(30px, -30px); }
+      66% { transform: translate(-20px, 20px); }
+    }
+    
+    /* Premium Glass 2.0 */
+    .glass-premium {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
+    .glass-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+    }
+    
+    /* Neon Glow Effects */
+    .glow-orange {
+      box-shadow: 0 0 20px rgba(232, 100, 26, 0.4), 0 0 40px rgba(232, 100, 26, 0.2);
+    }
+    .glow-orange-sm {
+      box-shadow: 0 0 10px rgba(232, 100, 26, 0.3);
+    }
+    .glow-text {
+      text-shadow: 0 0 20px rgba(232, 100, 26, 0.5), 0 0 40px rgba(232, 100, 26, 0.3);
+    }
+    
+    /* 3D Card Effect */
+    .card-3d {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    .card-3d-inner {
+      transition: transform 0.5s ease;
+    }
+    .card-3d:hover .card-3d-inner {
+      transform: rotateY(5deg) rotateX(5deg);
+    }
+    
+    /* Premium Shadows */
+    .shadow-premium {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 24px -6px rgba(0, 0, 0, 0.15);
+    }
+    .shadow-card {
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2), 0 10px 20px -8px rgba(0, 0, 0, 0.1);
+    }
+    .shadow-hover-lift {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .shadow-hover-lift:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Animated Gradients */
+    .gradient-animate {
+      background: linear-gradient(-45deg, #E8641A, #ff9f5a, #1B2D5B, #2a3f6a);
+      background-size: 400% 400%;
+      animation: gradientAnimate 15s ease infinite;
+    }
+    @keyframes gradientAnimate {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #E8641A 0%, #ff9f5a 50%, #E8641A 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: textGradient 3s ease infinite;
+    }
+    @keyframes textGradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .gradient-border {
+      position: relative;
+      background: linear-gradient(135deg, rgba(232, 100, 26, 0.2), rgba(255, 159, 90, 0.2));
+      border-radius: 24px;
+    }
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #E8641A, #ff9f5a, #1B2D5B, #E8641A);
+      background-size: 400% 400%;
+      animation: borderGradient 8s ease infinite;
+      z-index: -1;
+    }
+    @keyframes borderGradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    /* Premium Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.3); }
+      50% { transform: scale(1.1); }
+      70% { transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(232, 100, 26, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(232, 100, 26, 0.5); }
+    }
+    
+    /* Skeleton Loading */
+    .skeleton {
+      background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+    }
+    
+    /* Button Effects */
+    .btn-premium {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .btn-premium::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    .btn-premium:hover::before {
+      transform: translateX(100%);
+    }
+    
+    /* Premium Input */
+    .input-premium {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .input-premium:focus {
+      outline: none;
+      border-color: #E8641A;
+      box-shadow: 0 0 0 3px rgba(232, 100, 26, 0.1), 0 0 20px rgba(232, 100, 26, 0.2);
+    }
+    .input-premium::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* Text Selection */
+    ::selection {
+      background: rgba(232, 100, 26, 0.3);
+      color: #fff;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #E8641A, #ff9f5a);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #E8641A;
+    }
+    
+    /* Focus Ring */
+    :focus-visible {
+      outline: 2px solid #E8641A;
+      outline-offset: 2px;
+    }
+    
+    /* Stagger Animations */
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: linear-gradient(135deg, #f8f9fc 0%, #eef1f6 100%);
+      color: var(--gray-900);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; border: none; }
+    img { display: block; }
+    
+    /* Premium Glass Effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    }
+    .glass-dark {
+      background: rgba(27, 45, 91, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Premium Shadows */
+    .shadow-premium {
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(232, 100, 26, 0.1);
+    }
+    .shadow-card {
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+    .shadow-hover:hover {
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(232, 100, 26, 0.15);
+    }
+    
+    /* Premium Gradients */
+    .gradient-primary {
+      background: linear-gradient(135deg, #E8641A 0%, #ff9f5a 50%, #E8641A 100%);
+      background-size: 200% 200%;
+      animation: gradientFloat 3s ease infinite;
+    }
+    @keyframes gradientFloat {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .gradient-dark {
+      background: linear-gradient(135deg, #1B2D5B 0%, #2a3f6a 50%, #1B2D5B 100%);
+    }
+    
+    /* Premium Animations */
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .scale-in {
+      animation: scaleIn 0.3s ease forwards;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Premium Border */
+    .border-premium {
+      border: 1px solid rgba(232, 100, 26, 0.2);
+    }
+    .border-premium-light {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* ANNOUNCEMENT BAR */
+    .announce-bar {
+      background: var(--dark);
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .announce-bar i { color: var(--primary-light); }
+    .announce-bar span { color: var(--primary-light); font-weight: 700; }
+
+    /* HEADER */
+    .header {
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      border-bottom: 1px solid var(--gray-200);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .logo-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      object-fit: contain;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.2);
+    }
+    .logo-name {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+    }
+    .logo-name span, .logo-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      color: var(--dark);
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+    }
+    .logo-name span { color: var(--primary); }
+    .delivery-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,177,106,0.08);
+      border: 1px solid rgba(0,177,106,0.2);
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--success);
+      flex-shrink: 0;
+    }
+    .delivery-badge i { font-size: 0.75rem; }
+    .search-wrap {
+      flex: 1;
+      position: relative;
+      max-width: 480px;
+    }
+    .search-wrap i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-400);
+      font-size: 0.9rem;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 11px 16px 11px 42px;
+      background: var(--gray-100);
+      border: 1.5px solid transparent;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--gray-900);
+      transition: all 0.2s;
+    }
+    .search-wrap input:focus {
+      outline: none;
+      background: #fff;
+      border-color: var(--primary);
+    }
+    .search-wrap input::placeholder { color: var(--gray-400); }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      background: var(--gray-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-700);
+      font-size: 1rem;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .icon-btn:hover { background: var(--gray-200); }
+    .icon-btn .badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 18px;
+      height: 18px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.68rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cart-btn-main {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #E8641A 0%, #c9531a 100%);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(232, 100, 26, 0.4);
+    }
+    .cart-btn-main:hover { 
+      background: linear-gradient(135deg, #ff9f5a 0%, #E8641A 100%); 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232, 100, 26, 0.5);
+    }
+    .cart-btn-main .cart-total { font-size: 0.82rem; opacity: 0.85; }
+
+    /* CATEGORY NAV */
+    .cat-nav {
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 100px;
+      z-index: 800;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .cat-nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .cat-nav-inner::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 14px 18px;
+      border-radius: 0;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      background: none;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .cat-btn:hover { color: var(--gray-900); }
+    .cat-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .cat-btn .cat-emoji { font-size: 1rem; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(120deg, var(--dark-dark) 0%, var(--dark) 60%, #1e3a6e 100%);
+      padding: 56px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -100px;
+      top: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(232,100,26,0.18) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 30%;
+      bottom: -80px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0,177,106,0.12) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,100,26,0.2);
+      border: 1px solid rgba(232,100,26,0.35);
+      color: #ffb07a;
+      padding: 7px 16px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      letter-spacing: -1px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--primary-light);
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { color: #fff; }
+    .hero-stat-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #fff;
+    }
+    .hero-stat-val span { color: var(--primary-light); }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+    }
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,100,26,0.2);
+      border: 1px solid rgba(232,100,26,0.35);
+      color: #ffb07a;
+      padding: 7px 16px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      letter-spacing: -1px;
+      text-shadow: 0 4px 30px rgba(232, 100, 26, 0.3);
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #ff9f5a 0%, #E8641A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { color: #fff; }
+    .hero-stat-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #fff;
+    }
+    .hero-stat-val span { color: var(--primary-light); }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+    }
+    .hero-stat-add {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    /* PROMO CARDS */
+    .promo-section {
+      max-width: 1280px;
+      margin: -36px auto 0;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      position: relative;
+      z-index: 10;
+    }
+    .promo-card {
+      border-radius: var(--r-xl);
+      padding: 22px 24px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .promo-card:hover { 
+      transform: translateY(-5px) scale(1.02); 
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25); 
+    }
+    .promo-card.orange { background: linear-gradient(135deg, #E8641A 0%, #ff9f5a 100%); }
+    .promo-card.navy { background: linear-gradient(135deg, #1B2D5B 0%, #2a4070 100%); }
+    .promo-card.green { background: linear-gradient(135deg, #00875a 0%, #00B16A 100%); }
+    .promo-card::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      bottom: -20px;
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+    .promo-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .promo-card h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      letter-spacing: -0.3px;
+    }
+    .promo-card p { font-size: 0.82rem; opacity: 0.8; }
+    .promo-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.4rem;
+      opacity: 0.25;
+    }
+
+    /* MAIN LAYOUT */
+    .page-body {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+      background: #f8f9fa;
+    }
+
+    /* SECTION HEADER */
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding: 16px 24px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+    }
+    .section-head h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--dark);
+    }
+    .see-all {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .see-all:hover { text-decoration: underline; }
+
+    /* PRODUCTS GRID */
+.products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .product-card:hover { 
+      transform: translateY(-6px); 
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12); 
+      border-color: var(--primary-light);
+    }
+    .product-img {
+      background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(to top, rgba(0,0,0,0.03), transparent);
+    }
+    .product-img img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover .product-img img { transform: scale(1.08); }
+    .product-img i { font-size: 3.5rem; color: var(--gray-300); }
+    .offer-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: linear-gradient(135deg, #E8641A, #ff9f5a);
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(232, 100, 26, 0.3);
+    } 
+      border-color: var(--primary-light);
+    }
+    .product-img {
+      background: var(--gray-50);
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-img img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      transition: transform 0.3s;
+    }
+    .product-card:hover .product-img img { transform: scale(1.06); }
+    .product-img i { font-size: 3rem; color: var(--gray-300); }
+    .offer-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--primary);
+      color: #fff;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .product-body { padding: 18px; }
+    .product-cat {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .product-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 6px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .product-size {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin-bottom: 14px;
+    }
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--gray-900);
+    }
+    .product-price del {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      font-weight: 500;
+      margin-right: 4px;
+    }
+    .add-btn {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #E8641A, #c9531a);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(232, 100, 26, 0.35);
+    }
+    .add-btn:hover { 
+      background: linear-gradient(135deg, #c9531a, #E8641A);
+      transform: scale(1.1); 
+    }
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      background: var(--gray-100);
+      border-radius: 50%;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .qty-btn:hover { background: var(--gray-200); }
+    .qty-val { font-size: 0.9rem; font-weight: 700; min-width: 20px; text-align: center; }
+
+    /* CART SIDEBAR - SLIDE OUT PANEL */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+      backdrop-filter: blur(2px);
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 400px;
+      background: #fff;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .cart-panel.open { transform: translateX(0); }
+    .cart-head {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-head h2 { font-size: 1.15rem; font-weight: 800; }
+    .close-btn {
+      width: 36px;
+      height: 36px;
+      background: var(--gray-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-700);
+      font-size: 1rem;
+      transition: background 0.15s;
+    }
+    .close-btn:hover { background: var(--gray-200); }
+    .cart-delivery-info {
+      padding: 12px 24px;
+      background: rgba(0,177,106,0.06);
+      border-bottom: 1px solid rgba(0,177,106,0.15);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--success);
+    }
+    .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--gray-400);
+      text-align: center;
+      gap: 12px;
+    }
+    .cart-empty i { font-size: 3rem; }
+    .cart-empty h3 { font-size: 1rem; font-weight: 700; color: var(--gray-700); }
+    .cart-empty p { font-size: 0.85rem; }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-img {
+      width: 56px;
+      height: 56px;
+      background: var(--gray-50);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .cart-item-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .cart-item-img i { font-size: 1.4rem; color: var(--gray-300); }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 3px; }
+    .cart-item-price { font-size: 0.82rem; color: var(--gray-500); }
+    .cart-item-controls { display: flex; align-items: center; gap: 8px; }
+    .ci-qty-btn {
+      width: 28px;
+      height: 28px;
+      background: var(--gray-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: background 0.15s;
+    }
+    .ci-qty-btn:hover { background: var(--gray-200); }
+    .ci-qty { font-size: 0.88rem; font-weight: 700; min-width: 18px; text-align: center; }
+    .ci-total { font-size: 0.92rem; font-weight: 700; min-width: 48px; text-align: right; }
+
+    .cart-footer { padding: 20px 24px; border-top: 1px solid var(--gray-200); }
+    .cart-subtotals { margin-bottom: 16px; }
+    .cart-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      padding: 5px 0;
+      color: var(--gray-500);
+    }
+    .cart-row.total {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--gray-900);
+      padding-top: 12px;
+      border-top: 1px solid var(--gray-200);
+      margin-top: 8px;
+    }
+    .cart-minimum {
+      background: rgba(232,100,26,0.06);
+      border: 1px solid rgba(232,100,26,0.2);
+      border-radius: var(--r-md);
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .checkout-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #E8641A 0%, #c9531a 100%);
+      color: #fff;
+      padding: 16px;
+      border-radius: var(--r-lg);
+      font-size: 1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 6px 25px rgba(232, 100, 26, 0.4);
+    }
+    .checkout-btn:hover { 
+      background: linear-gradient(135deg, #ff9f5a 0%, #E8641A 100%); 
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(232, 100, 26, 0.5);
+    }
+    .checkout-btn:disabled { background: var(--gray-300); cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* CHECKOUT MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      display: flex;
+      align-items: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: #fff;
+      border-radius: 24px 24px 0 0;
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      max-height: 92vh;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0); }
+    .modal-handle {
+      width: 40px;
+      height: 4px;
+      background: var(--gray-200);
+      border-radius: 2px;
+      margin: 12px auto 0;
+    }
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-header h2 { font-size: 1.15rem; font-weight: 800; }
+    .modal-body { padding: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--gray-700); margin-bottom: 6px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--r-md);
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--gray-900);
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #fff;
+    }
+    .form-group textarea { resize: none; height: 80px; }
+    .payment-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pay-opt {
+      padding: 14px;
+      border: 2px solid var(--gray-200);
+      border-radius: var(--r-md);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .pay-opt i { display: block; font-size: 1.4rem; margin-bottom: 6px; color: var(--gray-400); }
+    .pay-opt.selected { border-color: var(--primary); background: rgba(232,100,26,0.04); color: var(--primary); }
+    .pay-opt.selected i { color: var(--primary); }
+    .order-summary-box {
+      background: var(--gray-50);
+      border-radius: var(--r-lg);
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .order-summary-box h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 12px; color: var(--gray-700); }
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 4px 0;
+      color: var(--gray-700);
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+      font-weight: 800;
+      padding-top: 12px;
+      margin-top: 8px;
+      border-top: 1px solid var(--gray-200);
+    }
+    .place-order-btn {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      padding: 17px;
+      border-radius: var(--r-lg);
+      font-size: 1rem;
+      font-weight: 800;
+      transition: background 0.2s;
+    }
+    .place-order-btn:hover { background: var(--primary-dark); }
+
+    /* Address Dropdown */
+    .address-dropdown {
+      position: absolute;
+      z-index: 1000;
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      max-height: 220px;
+      overflow-y: auto;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      margin-top: 6px;
+    }
+    .address-result-item {
+      padding: 12px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 0.9rem;
+      transition: background 0.2s;
+      display: block;
+    }
+    .address-result-item:last-child { border-bottom: none; }
+    .address-result-item:hover { background: var(--gray-100); }
+    .address-result-item strong { color: var(--primary); font-weight: 600; }
+
+    /* Order Cards */
+    .order-card {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .order-status {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    .order-status.pending { background: #FEF3C7; color: #92400E; }
+    .order-status.preparing { background: #DBEAFE; color: #1E40AF; }
+    .order-status.delivered { background: #D1FAE5; color: #065F46; }
+    .order-items { font-size: 0.9rem; color: var(--gray-700); margin-bottom: 8px; }
+    .order-footer { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--gray-500); }
+
+    /* SUCCESS MODAL */
+    .success-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 3000;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-modal.open { display: flex; }
+    .success-box {
+      background: #fff;
+      border-radius: 24px;
+      padding: 48px 36px;
+      text-align: center;
+      max-width: 380px;
+      width: 90%;
+      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--success), #00d47e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2rem;
+      color: #fff;
+    }
+    .success-box h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+    .success-box p { color: var(--gray-500); font-size: 0.9rem; margin-bottom: 8px; }
+    .order-num {
+      background: var(--gray-50);
+      border-radius: var(--r-md);
+      padding: 14px;
+      margin: 16px 0;
+    }
+    .order-num strong { font-size: 1.3rem; color: var(--primary); }
+    .close-success {
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .close-success:hover { background: var(--primary-dark); }
+
+    /* FOOTER */
+    .footer {
+      background: linear-gradient(135deg, #0f1629 0%, #1B2D5B 100%);
+      color: rgba(255,255,255,0.75);
+      padding: 80px 24px 32px;
+      margin-top: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-col {
+      padding-right: 24px;
+    }
+    .footer-logo {
+      height: 48px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+    }
+    .footer-brand-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.65);
+    }
+    .footer-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(232, 100, 26, 0.15);
+      border: 1px solid rgba(232, 100, 26, 0.3);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary-light);
+    }
+    .footer-heading {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .footer-links-col {
+      background: rgba(255,255,255,0.04);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      transition: all 0.25s ease;
+      display: inline-block;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copyright {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.82rem;
+    }
+    .footer-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-warning {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.04);
+      padding: 10px 16px;
+      border-radius: 8px;
+    }
+    .footer-warning i {
+      color: var(--primary);
+    }
+
+    @media (max-width: 900px) {
+      .footer-main { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .footer-brand-col { grid-column: 1 / -1; }
+    }
+    @media (max-width: 580px) {
+      .footer-main { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--gray-900);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      z-index: 5000;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast i { color: var(--success); }
+
+    /* PRODUCT DETAIL MODAL */
+    #productModal {
+      align-items: center;
+      justify-content: center;
+    }
+    .product-detail-modal {
+      background: #fff;
+      border-radius: 24px;
+      max-width: 480px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .product-detail-header {
+      position: relative;
+      background: linear-gradient(135deg, var(--gray-100) 0%, #fff 100%);
+      padding: 40px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .product-detail-header img {
+      max-width: 100%;
+      max-height: 160px;
+      object-fit: contain;
+    }
+    .product-detail-header i {
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.4;
+    }
+    .product-detail-header .close-modal {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      background: var(--gray-100);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-700);
+      transition: all 0.2s;
+    }
+    .product-detail-header .close-modal:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .product-detail-body { padding: 24px; }
+    .product-detail-cat {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .product-detail-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .product-detail-size {
+      font-size: 0.95rem;
+      color: var(--gray-500);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .product-detail-size i { color: var(--primary); }
+    .product-highlights {
+      background: rgba(232, 100, 26, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .product-highlights h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .product-highlights ul { list-style: none; }
+    .product-highlights li {
+      font-size: 0.85rem;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+    .product-highlights li i {
+      color: var(--success);
+      margin-right: 8px;
+    }
+    .product-description {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .product-description h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .product-description p {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+    .product-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .product-details-grid .detail-item {
+      background: var(--gray-100);
+      padding: 12px;
+      border-radius: 10px;
+    }
+    .product-details-grid .detail-label {
+      font-size: 0.72rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .product-details-grid .detail-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+    .product-detail-price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    .product-detail-price del {
+      font-size: 1rem;
+      color: var(--gray-400);
+      margin-right: 8px;
+    }
+    .product-detail-qty {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .product-detail-qty label {
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+    .product-detail-qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .product-detail-qty-controls button {
+      width: 36px;
+      height: 36px;
+      background: var(--gray-100);
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-700);
+      transition: all 0.2s;
+    }
+    .product-detail-qty-controls button:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .product-detail-qty-controls input {
+      width: 50px;
+      text-align: center;
+      border: 2px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .product-detail-add-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #E8641A 0%, #ff9f5a 50%, #c9531a 100%);
+      background-size: 200% 200%;
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s;
+      box-shadow: 0 8px 30px rgba(232, 100, 26, 0.4);
+    }
+    .product-detail-add-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(232, 100, 26, 0.5);
+      background-position: 100% 100%;
+    }
+
+    /* FULLSCREEN IMAGE */
+    .fullscreen-image {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 6000;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .fullscreen-image.show { display: flex; }
+    .fullscreen-image img {
+      max-width: 90%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    .close-fullscreen {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .close-fullscreen:hover { background: var(--primary); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .promo-section { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .announce-bar { font-size: 0.75rem; }
+      .delivery-badge { display: none; }
+      .header-inner { padding: 0 16px; height: 70px; }
+      .cat-nav { top: 70px; }
+      .promo-section { grid-template-columns: 1fr; padding: 0 16px; }
+      .page-body { padding: 24px 16px 48px; }
+      .hero { padding: 40px 16px 60px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .product-img { height: 130px; }
+      .cart-panel { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce-bar">
+  <i class="fas fa-bolt"></i> Fast delivery in <span>20–30 minutes</span> — Order before 11PM &nbsp;·&nbsp; <i class="fas fa-truck"></i> Free delivery over <span>£25</span>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="assets/img/lelocal-removebg-preview.png" alt="Le Local" class="logo-img" style="background:#fff;padding:4px;">
+      <div class="logo-name"><span class="logo-text">Le Local</span></div>
+    </div>
+    <div class="delivery-badge">
+      <i class="fas fa-bolt"></i> Delivering now · Leicester
+    </div>
+    <div class="search-wrap">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search beer, spirits, snacks…" id="searchInput" oninput="handleSearch()">
+    </div>
+    <div class="header-right">
+      <button class="icon-btn" onclick="openOrdersModal()">
+        <i class="fas fa-clipboard-list"></i>
+      </button>
+      <button class="icon-btn" onclick="window.location.href='le-local-account.html'">
+        <i class="fas fa-user"></i>
+      </button>
+      <button class="cart-btn-main" onclick="openCart()">
+        <i class="fas fa-shopping-basket"></i>
+        <span id="cartCountMain">0 items</span>
+        <span class="cart-total" id="cartTotalMain">· £0.00</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORY NAV -->
+<nav class="cat-nav">
+  <div class="cat-nav-inner" id="catNav">
+    <button class="cat-btn active" onclick="filterCat(this,'All')"><span class="cat-emoji">🛍️</span> All</button>
+    <button class="cat-btn" onclick="filterCat(this,'Beer')"><span class="cat-emoji">🍺</span> Beer</button>
+    <button class="cat-btn" onclick="filterCat(this,'Spirits')"><span class="cat-emoji">🥃</span> Spirits</button>
+    <button class="cat-btn" onclick="filterCat(this,'Wine')"><span class="cat-emoji">🍷</span> Wine</button>
+    <button class="cat-btn" onclick="filterCat(this,'Cider')"><span class="cat-emoji">🍏</span> Cider</button>
+    <button class="cat-btn" onclick="filterCat(this,'Soft Drinks')"><span class="cat-emoji">🥤</span> Soft Drinks</button>
+    <button class="cat-btn" onclick="filterCat(this,'Snacks')"><span class="cat-emoji">🍿</span> Snacks</button>
+    <button class="cat-btn" onclick="filterCat(this,'Tobacco')"><span class="cat-emoji">🚬</span> Tobacco</button>
+    <button class="cat-btn" onclick="filterCat(this,'Vapes')"><span class="cat-emoji">💨</span> Vapes</button>
+    <button class="cat-btn" onclick="filterCat(this,'Groceries')"><span class="cat-emoji">🛒</span> Groceries</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill"><i class="fas fa-bolt"></i> Express Delivery</div>
+    <h1>Your Local Shop,<br><em>At Your Door</em></h1>
+    <p>Beer, spirits, wine, vapes & groceries delivered in 20–30 minutes. Open late, every day.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val"><span>0</span>🌱</div>
+        <div class="hero-stat-label">Zero Emissions</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val"><span>200</span>+</div>
+        <div class="hero-stat-label">Products</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO CARDS -->
+<div class="promo-section">
+  <div class="promo-card orange" onclick="filterCat(document.querySelector('.cat-btn'),'Spirits')">
+    <div class="promo-tag">🔥 Hot Deal</div>
+    <h3>25% Off Spirits</h3>
+    <p>Jack Daniel's, Smirnoff & more</p>
+    <i class="fas fa-glass-whiskey promo-icon"></i>
+  </div>
+  <div class="promo-card navy" onclick="openCart()">
+    <div class="promo-tag">🚚 Free Delivery</div>
+    <h3>Free Over £25</h3>
+    <p>On all orders over £25</p>
+    <i class="fas fa-truck promo-icon"></i>
+  </div>
+  <div class="promo-card green" onclick="filterCat(document.querySelector('.cat-btn'),'Snacks')">
+    <div class="promo-tag">⚡ Meal Deal</div>
+    <h3> Drink + Snack £4.99</h3>
+    <p>Any drink + any snack</p>
+    <i class="fas fa-utensils promo-icon"></i>
+  </div>
+</div>
+
+<!-- BANNER ADS -->
+<div style="max-width:1280px;margin:24px auto 20px;padding:0 24px">
+  <a href="deals.html" style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,#E8641A,#ff9f5a);border-radius:16px;padding:28px 32px;text-decoration:none;gap:20px;box-shadow:0 8px 32px rgba(232,100,26,0.35);transition:all 0.3s ease;position:relative;overflow:hidden" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+    <div style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent,rgba(255,255,255,0.1),transparent);animation:shimmer 3s infinite;transform:rotate(45deg)"></div>
+    <div style="display:flex;align-items:center;gap:16px;position:relative;z-index:1">
+      <div style="font-size:2.5rem;animation:pulse 2s infinite">🔥</div>
+      <div>
+        <div style="font-size:0.85rem;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Flash Sale</div>
+        <div style="font-size:1.4rem;font-weight:800;color:#fff">30% OFF All Beer & Cider</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;position:relative;z-index:1">
+      <div style="font-size:1.1rem;font-weight:600;color:rgba(255,255,255,0.9)">Use code:</div>
+      <div style="background:#fff;color:#E8641A;padding:12px 20px;border-radius:10px;font-weight:800;font-size:1.1rem;letter-spacing:1px;animation:glow 2s infinite alternate">BEER30</div>
+    </div>
+  </a>
+</div>
+<style>@keyframes shimmer{0%{transform:rotate(45deg) translateX(-100%)}100%{transform:rotate(45deg) translateX(100%)}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}@keyframes glow{0%{box-shadow:0 0 5px rgba(255,255,255,0.5)}100%{box-shadow:0 0 20px rgba(255,255,255,0.8)}}</style>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page-body">
+  <div class="section-head">
+    <h2 id="sectionTitle">🛍️ All Products</h2>
+    <span class="see-all" id="productCount"></span>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-main">
+      <div class="footer-brand-col">
+        <img src="assets/img/lelocal-removebg-preview.png" alt="Le Local" class="footer-logo">
+        <h3 class="footer-brand-name">Le Local</h3>
+        <p class="footer-desc">Leicester's trusted off licence & grocery delivery. Fast, reliable, age-verified alcohol delivery in 20-30 minutes.</p>
+        <div class="footer-badges">
+          <span class="footer-badge"><i class="fas fa-id-card"></i> ID Verified</span>
+          <span class="footer-badge"><i class="fas fa-truck"></i> Express Delivery</span>
+        </div>
+      </div>
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Shop</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">All Products</a></li>
+          <li><a href="index.html?cat=Beer">Beer & Cider</a></li>
+          <li><a href="index.html?cat=Spirits">Spirits</a></li>
+          <li><a href="index.html?cat=Wine">Wine</a></li>
+          <li><a href="index.html?cat=Vapes">Vapes</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Help</h4>
+        <ul class="footer-links">
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="delivery.html">Delivery Areas</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Company</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="dashboard.html">Business Login</a></li>
+          <li><a href="le-local-account.html">My Account</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <span>&copy; 2025 Le Local. All rights reserved.</span>
+        <span class="footer-location"><i class="fas fa-map-marker-alt"></i> Leicester, UK</span>
+      </div>
+      <div class="footer-warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>Age verification required. Drink responsibly. 18+ only.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART OVERLAY + PANEL -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <h2>Your Basket</h2>
+    <button class="close-btn" onclick="closeCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-delivery-info">
+    <i class="fas fa-bolt"></i> Estimated delivery: 20–30 minutes
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <i class="fas fa-shopping-basket"></i>
+      <h3>Your basket is empty</h3>
+      <p>Add some items to get started!</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div id="cartMinimum" class="cart-minimum" style="display:none">
+      <i class="fas fa-info-circle"></i> Minimum order is £10
+    </div>
+    <div class="cart-subtotals" id="cartSubtotals" style="display:none">
+      <div class="cart-row"><span>Subtotal</span><span id="subtotalVal">£0.00</span></div>
+      <div class="cart-row"><span>Delivery</span><span id="deliveryVal">£1.79</span></div>
+      <div class="cart-row" style="color:var(--gray-500);font-size:0.8rem"><span>+ 99p service + 30p bag</span></div>
+      <div id="smallOrderFeeRow" class="cart-row" style="color:var(--primary);display:none"><span>Small Order Fee</span><span id="smallOrderFeeVal">£0.00</span></div>
+      <div class="cart-row total"><span>Total</span><span id="totalVal">£0.00</span></div>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()">
+      <span>Checkout</span>
+      <span id="checkoutTotal">£0.00</span>
+    </button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <h2>Complete Your Order</h2>
+      <button class="close-btn" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="order-summary-box">
+        <h4>Order Summary</h4>
+        <div id="checkoutSummaryItems"></div>
+        <div class="summary-total">
+          <span>Total (inc. delivery)</span>
+          <span id="checkoutSummaryTotal">£0.00</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="custName">Full Name</label>
+        <input type="text" id="custName" placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label for="custPhone">Phone Number</label>
+        <input type="tel" id="custPhone" placeholder="+44 7700 000000">
+      </div>
+      <div class="form-group">
+        <label for="postcodeLookup">Find Address</label>
+        <input type="text" id="postcodeLookup" placeholder="Start typing postcode or address..." autocomplete="off">
+        <div id="addressDropdown" class="address-dropdown" style="display: none;"></div>
+      </div>
+      <div class="form-group">
+        <label for="custAddress">Delivery Address</label>
+        <textarea id="custAddress" placeholder="Select an address above"></textarea>
+      </div>
+        <div class="form-group">
+          <span id="paymentMethodLabel" style="font-weight:600;display:block;margin-bottom:8px">Payment Method</span>
+          <input type="hidden" id="paymentMethod" value="card">
+        <div class="payment-options">
+          <div class="pay-opt selected" id="payCard">
+            <i class="fas fa-credit-card"></i> Card Payment
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="custNotes">Special Instructions (optional)</label>
+        <input type="text" id="custNotes" placeholder="Any notes for the driver…">
+      </div>
+      <div class="form-group" style="display:flex;align-items:center;gap:10px;margin-top:12px">
+        <input type="checkbox" id="emailOptIn" checked style="width:18px;height:18px">
+        <label for="emailOptIn" style="margin:0;font-weight:400;font-size:0.9rem">Send order confirmation to email</label>
+      </div>
+      <button class="place-order-btn" onclick="placeOrder()">
+        <i class="fas fa-check-circle"></i> Place Order · <span id="placeOrderTotal">£0.00</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="success-modal" id="successModal">
+  <div class="success-box">
+    <div class="success-icon"><i class="fas fa-check"></i></div>
+    <h2>Order Placed!</h2>
+    <p>We've received your order and it's being prepared now.</p>
+    <div class="order-num">
+      <div style="font-size:0.78rem;color:var(--gray-500);margin-bottom:4px;">ORDER NUMBER</div>
+      <strong id="successOrderNum">#ORD0001</strong>
+    </div>
+    <p>Expected delivery in <strong>20–30 minutes</strong></p>
+    <br>
+    <button class="close-success" onclick="closeSuccess()">Order More</button>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="modal-overlay" id="productModal">
+  <div class="product-detail-modal">
+    <div class="product-detail-content" id="productDetailContent"></div>
+  </div>
+</div>
+
+<!-- FULLSCREEN IMAGE -->
+<div class="fullscreen-image" id="fullscreenImage" onclick="closeFullscreen()">
+  <span class="close-fullscreen">&times;</span>
+  <img id="fullscreenImg" src="" alt="">
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg"></span></div>
+
+<script>
+  // PRODUCTS DATA
+  const defaultProducts = [
+    // Beer - Lagers
+    { id: 1, name: "Stella Artois 4x440ml", category: "Beer", price: 5.50, size: "4x440ml", desc: "Classic Belgian lager with smooth, crisp taste", icon: "fa-beer", offer: false, 
+      highlights: ['600+ years brewing heritage', 'Premium quality ingredients', 'Crisp & refreshing taste', 'Award winning beer'],
+      description: 'Stella Artois is a premium Belgian lager brewed with over 600 years of brewing expertise. Made with 100% natural ingredients.' },
+    { id: 2, name: "Heineken 6x330ml", category: "Beer", price: 6.99, size: "6x330ml", desc: "Premium Dutch lager", icon: "fa-beer", offer: true,
+      highlights: ['World famous brand', 'Premium Dutch lager', 'Refreshing & smooth', 'A+ quality'],
+      description: 'Heineken is one of the worlds most recognised beers.' },
+    { id: 3, name: "Peroni 4x330ml", category: "Beer", price: 6.50, size: "4x330ml", desc: "Italian premium lager", icon: "fa-beer", offer: false },
+    { id: 4, name: "Guinness Draught 4x440ml", category: "Beer", price: 6.50, size: "4x440ml", desc: "Iconic Irish stout", icon: "fa-beer", offer: false },
+    { id: 5, name: "Corona Extra 12x330ml", category: "Beer", price: 12.99, size: "12x330ml", desc: "Mexican lager with lime", icon: "fa-beer", offer: true },
+    { id: 6, name: "Carlsberg 4x440ml", category: "Beer", price: 5.25, size: "4x440ml", desc: "Danish premium lager", icon: "fa-beer", offer: false },
+    { id: 7, name: "Budweiser 6x330ml", category: "Beer", price: 6.49, size: "6x330ml", desc: "American premium lager", icon: "fa-beer", offer: false },
+    { id: 8, name: "Amstel 4x330ml", category: "Beer", price: 5.00, size: "4x330ml", desc: "Refreshing Dutch lager", icon: "fa-beer", offer: false },
+    { id: 9, name: "Birra Moretti 6x330ml", category: "Beer", price: 6.99, size: "6x330ml", desc: "Italian regional lager", icon: "fa-beer", offer: true },
+    { id: 10, name: "Foster's 4x440ml", category: "Beer", price: 4.99, size: "4x440ml", desc: "Australian lager", icon: "fa-beer", offer: false },
+    { id: 11, name: "Coors Light 4x440ml", category: "Beer", price: 5.25, size: "4x440ml", desc: "Light American lager", icon: "fa-beer", offer: false },
+    { id: 12, name: "Sol 4x330ml", category: "Beer", price: 5.50, size: "4x330ml", desc: "Mexican pale lager", icon: "fa-beer", offer: false },
+    // Beer - Premium & IPAs
+    { id: 13, name: "BrewDog Punk IPA 4x330ml", category: "Beer", price: 6.99, size: "4x330ml", desc: "Fruity IPA", icon: "fa-beer", offer: true },
+    { id: 14, name: "Hawkins' Route 66 IPA 4x440ml", category: "Beer", price: 5.99, size: "4x440ml", desc: "American IPA", icon: "fa-beer", offer: false },
+    { id: 15, name: "Beavertown Neck Oil 4x330ml", category: "Beer", price: 6.50, size: "4x330ml", desc: "Juicy IPA", icon: "fa-beer", offer: false },
+    { id: 16, name: "BrewDog Elvis Juice 4x330ml", category: "Beer", price: 6.99, size: "4x330ml", desc: "Tropical IPA", icon: "fa-beer", offer: true },
+    // Beer - Real Ales
+    { id: 17, name: "Old Speckled Hen 4x440ml", category: "Beer", price: 5.50, size: "4x440ml", desc: "Premium ale", icon: "fa-beer", offer: false },
+    { id: 18, name: "London Pride 4x440ml", category: "Beer", price: 5.25, size: "4x440ml", desc: "Pale ale", icon: "fa-beer", offer: false },
+    { id: 19, name: "Doom Bar 4x440ml", category: "Beer", price: 5.00, size: "4x440ml", desc: "Premium bitter", icon: "fa-beer", offer: false },
+    // Spirits - Whiskey
+    { id: 101, name: "Jack Daniel's 70cl", category: "Spirits", price: 22.99, size: "70cl", desc: "Tennessee whiskey", icon: "fa-glass-whiskey", offer: true,
+      highlights: ['World famous whiskey', 'Charcoal mellowed', 'Smooth Tennessee taste', 'Premium quality'],
+      description: 'Jack Daniels is the worlds best selling Tennessee whiskey.' },
+    { id: 102, name: "Jack Daniel's Honey 70cl", category: "Spirits", price: 23.99, size: "70cl", desc: "Honey flavored whiskey", icon: "fa-glass-whiskey", offer: false },
+    { id: 103, name: "Jack Daniel's Apple 70cl", category: "Spirits", price: 23.99, size: "70cl", desc: "Apple flavored whiskey", icon: "fa-glass-whiskey", offer: false },
+    { id: 104, name: "Jameson Irish Whiskey 70cl", category: "Spirits", price: 19.99, size: "70cl", desc: "Triple distilled whiskey", icon: "fa-glass-whiskey", offer: false },
+    { id: 105, name: "Johnnie Walker Red 70cl", category: "Spirits", price: 18.99, size: "70cl", desc: "Blended Scotch", icon: "fa-glass-whiskey", offer: false },
+    { id: 106, name: "Johnnie Walker Black 70cl", category: "Spirits", price: 29.99, size: "70cl", desc: "Premium blend", icon: "fa-glass-whiskey", offer: true },
+    { id: 107, name: "Glenfiddich 12YO 70cl", category: "Spirits", price: 32.99, size: "70cl", desc: "Single malt Scotch", icon: "fa-glass-whiskey", offer: true },
+    { id: 108, name: "Chivas Regal 12YO 70cl", category: "Spirits", price: 26.99, size: "70cl", desc: "Blended Scotch", icon: "fa-glass-whiskey", offer: false },
+    { id: 109, name: "Tullamore DEW 70cl", category: "Spirits", price: 19.99, size: "70cl", desc: "Irish whiskey", icon: "fa-glass-whiskey", offer: false },
+    { id: 110, name: "Bushmills Original 70cl", category: "Spirits", price: 18.99, size: "70cl", desc: "Irish whiskey", icon: "fa-glass-whiskey", offer: false },
+    // Spirits - Vodka
+    { id: 111, name: "Smirnoff Vodka 70cl", category: "Spirits", price: 16.99, size: "70cl", desc: "Triple distilled vodka", icon: "fa-glass-whiskey", offer: false },
+    { id: 112, name: "Smirnoff Red Label 1L", category: "Spirits", price: 18.99, size: "1L", desc: "Value vodka", icon: "fa-glass-whiskey", offer: false },
+    { id: 113, name: "Grey Goose 70cl", category: "Spirits", price: 26.99, size: "70cl", desc: "Premium French vodka", icon: "fa-glass-whiskey", offer: false },
+    { id: 114, name: "Absolut 70cl", category: "Spirits", price: 17.99, size: "70cl", desc: "Swedish vodka", icon: "fa-glass-whiskey", offer: false },
+    { id: 115, name: "Absolut Elyx 70cl", category: "Spirits", price: 29.99, size: "70cl", desc: "Premium vodka", icon: "fa-glass-whiskey", offer: true },
+    { id: 116, name: "Belvedere 70cl", category: "Spirits", price: 27.99, size: "70cl", desc: "Polish rye vodka", icon: "fa-glass-whiskey", offer: false },
+    { id: 117, name: "Skyy Vodka 70cl", category: "Spirits", price: 16.99, size: "70cl", desc: "American vodka", icon: "fa-glass-whiskey", offer: false },
+    // Spirits - Gin
+    { id: 121, name: "Bombay Sapphire 70cl", category: "Spirits", price: 22.00, size: "70cl", desc: "Premium London gin", icon: "fa-glass-whiskey", offer: false },
+    { id: 122, name: "Gordon's Gin 70cl", category: "Spirits", price: 15.99, size: "70cl", desc: "Classic London dry gin", icon: "fa-glass-whiskey", offer: false },
+    { id: 123, name: "Gordon's Pink 70cl", category: "Spirits", price: 16.99, size: "70cl", desc: "Strawberry gin", icon: "fa-glass-whiskey", offer: false },
+    { id: 124, name: "Tanqueray 70cl", category: "Spirits", price: 22.99, size: "70cl", desc: "Premium dry gin", icon: "fa-glass-whiskey", offer: false },
+    { id: 125, name: "Hendrick's Gin 70cl", category: "Spirits", price: 28.99, size: "70cl", desc: "Cucumber & rose gin", icon: "fa-glass-whiskey", offer: true },
+    { id: 126, name: "Beefeater 70cl", category: "Spirits", price: 17.99, size: "70cl", desc: "London dry gin", icon: "fa-glass-whiskey", offer: false },
+    { id: 127, name: "Whitley Neill Gin 70cl", category: "Spirits", price: 21.99, size: "70cl", desc: "Handcrafted gin", icon: "fa-glass-whiskey", offer: false },
+    // Spirits - Rum
+    { id: 131, name: "Bacardi White Rum 70cl", category: "Spirits", price: 15.99, size: "70cl", desc: "Superior rum", icon: "fa-glass-whiskey", offer: true },
+    { id: 132, name: "Bacardi Gold 70cl", category: "Spirits", price: 17.99, size: "70cl", desc: "Aged rum", icon: "fa-glass-whiskey", offer: false },
+    { id: 133, name: "Captain Morgan 70cl", category: "Spirits", price: 16.99, size: "70cl", desc: "Spiced rum", icon: "fa-glass-whiskey", offer: false },
+    { id: 134, name: "Captain Morgan Spiced 70cl", category: "Spirits", price: 16.99, size: "70cl", desc: "Spiced gold rum", icon: "fa-glass-whiskey", offer: false },
+    { id: 135, name: "Havana Club 70cl", category: "Spirits", price: 17.99, size: "70cl", desc: "Cuban rum", icon: "fa-glass-whiskey", offer: false },
+    { id: 136, name: "Malibu 70cl", category: "Spirits", price: 15.99, size: "70cl", desc: "Coconut rum", icon: "fa-glass-whiskey", offer: false },
+    // Spirits - Tequila & Brandy
+    { id: 141, name: "Jose Cuervo Silver 70cl", category: "Spirits", price: 19.99, size: "70cl", desc: "Silver tequila", icon: "fa-glass-whiskey", offer: false },
+    { id: 142, name: "Jose Cuervo Gold 70cl", category: "Spirits", price: 19.99, size: "70cl", desc: "Gold tequila", icon: "fa-glass-whiskey", offer: false },
+    { id: 143, name: "Courvoisier VS 70cl", category: "Spirits", price: 22.99, size: "70cl", desc: "French brandy", icon: "fa-glass-whiskey", offer: false },
+    { id: 144, name: "Remy Martin VSOP 70cl", category: "Spirits", price: 32.99, size: "70cl", desc: "Fine brandy", icon: "fa-glass-whiskey", offer: true },
+    // Spirits - Liqueurs
+    { id: 151, name: "Baileys Irish Cream 70cl", category: "Spirits", price: 17.99, size: "70cl", desc: "Cream liqueur", icon: "fa-glass-whiskey", offer: false },
+    { id: 152, name: "Kahlua 70cl", category: "Spirits", price: 16.99, size: "70cl", desc: "Coffee liqueur", icon: "fa-glass-whiskey", offer: false },
+    { id: 153, name: "Cointreau 70cl", category: "Spirits", price: 24.99, size: "70cl", desc: "Orange liqueur", icon: "fa-glass-whiskey", offer: false },
+    { id: 154, name: "Disaronno 70cl", category: "Spirits", price: 18.99, size: "70cl", desc: "Amaretto", icon: "fa-glass-whiskey", offer: false },
+    { id: 155, name: "Southern Comfort 70cl", category: "Spirits", price: 16.99, size: "70cl", desc: "Peach liqueur", icon: "fa-glass-whiskey", offer: false },
+    // Wine - Red
+    { id: 201, name: "Echo Falls Rosé 75cl", category: "Wine", price: 6.99, size: "75cl", desc: "Light & refreshing rosé", icon: "fa-wine-glass-alt", offer: false },
+    { id: 202, name: "Hardy's Shiraz 75cl", category: "Wine", price: 7.50, size: "75cl", desc: "Full bodied red wine", icon: "fa-wine-glass-alt", offer: false },
+    { id: 203, name: "Prosecco DOC 75cl", category: "Wine", price: 9.99, size: "75cl", desc: "Italian sparkling wine", icon: "fa-champagne-glasses", offer: true,
+      highlights: ['DOC certified quality', 'Fresh & fruity', 'Perfect for celebrations', 'Italian tradition'],
+      description: 'Premium Italian Prosecco DOC.' },
+    { id: 204, name: "Casillero del Diablo Merlot 75cl", category: "Wine", price: 7.49, size: "75cl", desc: "Smooth red wine", icon: "fa-wine-glass-alt", offer: false },
+    { id: 205, name: "Casillero del Diablo Cabernet 75cl", category: "Wine", price: 7.49, size: "75cl", desc: "Full bodied red", icon: "fa-wine-glass-alt", offer: false },
+    { id: 206, name: "Wolf Blass Shiraz 75cl", category: "Wine", price: 7.99, size: "75cl", desc: "Australian red", icon: "fa-wine-glass-alt", offer: false },
+    { id: 207, name: "Yellow Tail Shiraz 75cl", category: "Wine", price: 6.99, size: "75cl", desc: "Fruity Australian red", icon: "fa-wine-glass-alt", offer: false },
+    { id: 208, name: "Lindeman's Shiraz 75cl", category: "Wine", price: 6.49, size: "75cl", desc: "Bin 50 Shiraz", icon: "fa-wine-glass-alt", offer: false },
+    { id: 209, name: "Peter Lehmann Cab 75cl", category: "Wine", price: 8.49, size: "75cl", desc: " Cabernet Sauvignon", icon: "fa-wine-glass-alt", offer: false },
+    // Wine - White
+    { id: 211, name: " Gallo Family Sauvignon 75cl", category: "Wine", price: 6.49, size: "75cl", desc: "Crisp white wine", icon: "fa-wine-glass-alt", offer: false },
+    { id: 212, name: "Kim Crawford Sauvignon 75cl", category: "Wine", price: 12.99, size: "75cl", desc: "Premium NZ white", icon: "fa-wine-glass-alt", offer: true },
+    { id: 213, name: "Cloudy Bay Sauvignon 75cl", category: "Wine", price: 14.99, size: "75cl", desc: "Marlborough white", icon: "fa-wine-glass-alt", offer: true },
+    { id: 214, name: "Stowford Press 75cl", category: "Wine", price: 5.99, size: "75cl", desc: "Light white wine", icon: "fa-wine-glass-alt", offer: false },
+    { id: 215, name: "Pinot Grigio 75cl", category: "Wine", price: 6.99, size: "75cl", desc: "Italian white", icon: "fa-wine-glass-alt", offer: false },
+    { id: 216, name: "Berton Vineyards Chardonnay 75cl", category: "Wine", price: 7.49, size: "75cl", desc: "Australian white", icon: "fa-wine-glass-alt", offer: false },
+    { id: 217, name: "Riesling 75cl", category: "Wine", price: 7.99, size: "75cl", desc: "Sweet white wine", icon: "fa-wine-glass-alt", offer: false },
+    // Wine - Rosé
+    { id: 221, name: "Whispering Angel Rosé 75cl", category: "Wine", price: 11.99, size: "75cl", desc: "Provence rosé", icon: "fa-wine-glass-alt", offer: true },
+    { id: 222, name: "Pale Rosé 75cl", category: "Wine", price: 8.99, size: "75cl", desc: "Fresh pink wine", icon: "fa-wine-glass-alt", offer: false },
+    { id: 223, name: "Mirabeau Rosé 75cl", category: "Wine", price: 10.99, size: "75cl", desc: "French rosé", icon: "fa-wine-glass-alt", offer: false },
+    // Wine - Sparkling & Champagne
+    { id: 231, name: "Freixenet Prosecco 75cl", category: "Wine", price: 8.99, size: "75cl", desc: "Spanish Prosecco", icon: "fa-champagne-glasses", offer: false },
+    { id: 232, name: "Mumm Champagne 75cl", category: "Wine", price: 24.99, size: "75cl", desc: "French Champagne", icon: "fa-champagne-glasses", offer: true },
+    { id: 233, name: "Moet Imperial 75cl", category: "Wine", price: 26.99, size: "75cl", desc: "Brut Champagne", icon: "fa-champagne-glasses", offer: true },
+    { id: 234, name: "Veuve Clicquot 75cl", category: "Wine", price: 34.99, size: "75cl", desc: "Yellow Label", icon: "fa-champagne-glasses", offer: true },
+    { id: 235, name: "Asti Spumante 75cl", category: "Wine", price: 7.99, size: "75cl", desc: "Sweet sparkling", icon: "fa-champagne-glasses", offer: false },
+    // Cider
+    { id: 301, name: "Strongbow Original 4x440ml", category: "Cider", price: 5.00, size: "4x440ml", desc: "Classic dry cider", icon: "fa-apple-alt", offer: false },
+    { id: 302, name: "Kopparberg Strawberry 500ml", category: "Cider", price: 2.50, size: "500ml", desc: "Swedish fruit cider", icon: "fa-apple-alt", offer: false },
+    { id: 303, name: "Kopparberg Raspberry 500ml", category: "Cider", price: 2.50, size: "500ml", desc: "Swedish raspberry", icon: "fa-apple-alt", offer: false },
+    { id: 304, name: "Kopparberg Passionfruit 500ml", category: "Cider", price: 2.50, size: "500ml", desc: "Fruit cider", icon: "fa-apple-alt", offer: false },
+    { id: 305, name: "Strongbow Dark Fruit 4x440ml", category: "Cider", price: 5.50, size: "4x440ml", desc: "Blackberry cider", icon: "fa-apple-alt", offer: false },
+    { id: 306, name: "Strongbow Cloudy Lemon 4x440ml", category: "Cider", price: 5.50, size: "4x440ml", desc: "Lemon cider", icon: "fa-apple-alt", offer: false },
+    { id: 307, name: "Aspall Cyder 500ml", category: "Cider", price: 2.99, size: "500ml", desc: "Natural Suffolk cider", icon: "fa-apple-alt", offer: false },
+    { id: 308, name: "Bulmers 4x440ml", category: "Cider", price: 5.25, size: "4x440ml", desc: "Irish cider", icon: "fa-apple-alt", offer: false },
+    { id: 309, name: "Magners Extra Strong 4x440ml", category: "Cider", price: 5.50, size: "4x440ml", desc: "5% abv cider", icon: "fa-apple-alt", offer: false },
+    { id: 310, name: "Old Rosie 500ml", category: "Cider", price: 2.49, size: "500ml", desc: "Rosé cider", icon: "fa-apple-alt", offer: false },
+    // Soft Drinks - Cola & Soda
+    { id: 401, name: "Coca-Cola 6x330ml", category: "Soft Drinks", price: 4.99, size: "6x330ml", desc: "The classic", icon: "fa-wine-bottle", offer: false },
+    { id: 402, name: "Coca-Cola 1L", category: "Soft Drinks", price: 2.49, size: "1L", desc: "Classic cola", icon: "fa-wine-bottle", offer: false },
+    { id: 403, name: "Diet Coke 6x330ml", category: "Soft Drinks", price: 4.99, size: "6x330ml", desc: "Zero sugar", icon: "fa-wine-bottle", offer: false },
+    { id: 404, name: "Coca-Cola Zero 6x330ml", category: "Soft Drinks", price: 4.99, size: "6x330ml", desc: "No sugar", icon: "fa-wine-bottle", offer: false },
+    { id: 405, name: "Pepsi 6x330ml", category: "Soft Drinks", price: 4.49, size: "6x330ml", desc: "Cola", icon: "fa-wine-bottle", offer: false },
+    { id: 406, name: "Pepsi Max 6x330ml", category: "Soft Drinks", price: 4.49, size: "6x330ml", desc: "Zero cola", icon: "fa-wine-bottle", offer: false },
+    { id: 407, name: "7UP 6x330ml", category: "Soft Drinks", price: 4.29, size: "6x330ml", desc: "Lemon lime", icon: "fa-wine-bottle", offer: false },
+    { id: 408, name: "Sprite 6x330ml", category: "Soft Drinks", price: 4.29, size: "6x330ml", desc: "Lemon clear", icon: "fa-wine-bottle", offer: false },
+    { id: 409, name: "Fanta Orange 6x330ml", category: "Soft Drinks", price: 4.29, size: "6x330ml", desc: "Orange soda", icon: "fa-wine-bottle", offer: false },
+    // Soft Drinks - Energy
+    { id: 421, name: "Red Bull 250ml", category: "Soft Drinks", price: 1.89, size: "250ml", desc: "Energy drink", icon: "fa-bolt", offer: false },
+    { id: 422, name: "Red Bull 4x250ml", category: "Soft Drinks", price: 5.99, size: "4x250ml", desc: "4 pack", icon: "fa-bolt", offer: false },
+    { id: 423, name: "Red Bull Sugarfree 250ml", category: "Soft Drinks", price: 1.89, size: "250ml", desc: "Zero sugar", icon: "fa-bolt", offer: false },
+    { id: 424, name: "Lucozade Sport 500ml", category: "Soft Drinks", price: 1.49, size: "500ml", desc: "Sports drink", icon: "fa-bolt", offer: false },
+    { id: 425, name: "Lucozade Energy 500ml", category: "Soft Drinks", price: 1.49, size: "500ml", desc: "Energy", icon: "fa-bolt", offer: false },
+    { id: 426, name: "Lucozade Original 500ml", category: "Soft Drinks", price: 1.29, size: "500ml", desc: "Classic energy", icon: "fa-bolt", offer: false },
+    { id: 427, name: "Power Horse 250ml", category: "Soft Drinks", price: 1.49, size: "250ml", desc: "Energy drink", icon: "fa-bolt", offer: false },
+    { id: 428, name: "Monster Energy 500ml", category: "Soft Drinks", price: 1.89, size: "500ml", desc: "Energy drink", icon: "fa-bolt", offer: false },
+    { id: 429, name: "Relentless 500ml", category: "Soft Drinks", price: 1.69, size: "500ml", desc: "Energy drink", icon: "fa-bolt", offer: false },
+    { id: 430, name: "Rockstar 500ml", category: "Soft Drinks", price: 1.79, size: "500ml", desc: "Energy drink", icon: "fa-bolt", offer: false },
+    // Soft Drinks - Mixers
+    { id: 441, name: "Tonic Water 6x150ml", category: "Soft Drinks", price: 2.99, size: "6x150ml", desc: "Mixer", icon: "fa-wine-bottle", offer: false },
+    { id: 442, name: "Ginger Ale 6x150ml", category: "Soft Drinks", price: 2.99, size: "6x150ml", desc: "Mixer", icon: "fa-wine-bottle", offer: false },
+    { id: 443, name: "Soda Water 6x150ml", category: "Soft Drinks", price: 2.49, size: "6x150ml", desc: "Mixer", icon: "fa-wine-bottle", offer: false },
+    // Soft Drinks - Water & Juice
+    { id: 451, name: "Evian Water 500ml", category: "Soft Drinks", price: 1.29, size: "500ml", desc: "Natural water", icon: "fa-wine-bottle", offer: false },
+    { id: 452, name: "Volvic Water 500ml", category: "Soft Drinks", price: 1.19, size: "500ml", desc: "Mineral water", icon: "fa-wine-bottle", offer: false },
+    { id: 453, name: "Buxton Water 500ml", category: "Soft Drinks", price: 0.99, size: "500ml", desc: "Spring water", icon: "fa-wine-bottle", offer: false },
+    { id: 454, name: "Apple Juice 1L", category: "Soft Drinks", price: 1.79, size: "1L", desc: "Fruit juice", icon: "fa-wine-bottle", offer: false },
+    { id: 455, name: "Orange Juice 1L", category: "Soft Drinks", price: 1.99, size: "1L", desc: "Fruit juice", icon: "fa-wine-bottle", offer: false },
+    { id: 456, name: "Cranberry Juice 1L", category: "Soft Drinks", price: 2.49, size: "1L", desc: "Fruit juice", icon: "fa-wine-bottle", offer: false },
+    { id: 457, name: "Raspberry Juice 1L", category: "Soft Drinks", price: 2.29, size: "1L", desc: "Fruit juice", icon: "fa-wine-bottle", offer: false },
+    // Snacks - Crisps
+    { id: 501, name: "Pringles Original 165g", category: "Snacks", price: 1.99, size: "165g", desc: "Crispy stacked crisps", icon: "fa-cookie", offer: false },
+    { id: 502, name: "Pringles Cheese 165g", category: "Snacks", price: 1.99, size: "165g", desc: "Cheese flavor", icon: "fa-cookie", offer: false },
+    { id: 503, name: "Pringles BBQ 165g", category: "Snacks", price: 1.99, size: "165g", desc: "Smoky BBQ", icon: "fa-cookie", offer: false },
+    { id: 504, name: "Doritos Cool Original 150g", category: "Snacks", price: 1.79, size: "150g", desc: "Cooler cheese", icon: "fa-cookie", offer: false },
+    { id: 505, name: "Doritos Chilli Heatwave 150g", category: "Snacks", price: 1.79, size: "150g", desc: "Spicy tortilla chips", icon: "fa-cookie", offer: false },
+    { id: 506, name: "Doritos Tangy Cheese 150g", category: "Snacks", price: 1.79, size: "150g", desc: "Tangy cheese", icon: "fa-cookie", offer: false },
+    { id: 507, name: "Walkers Salt & Vinegar 6x25g", category: "Snacks", price: 2.49, size: "6x25g", desc: "Ready salted", icon: "fa-cookie", offer: false },
+    { id: 508, name: "Walkers Cheese & Onion 6x25g", category: "Snacks", price: 2.49, size: "6x25g", desc: "Cheese onion", icon: "fa-cookie", offer: false },
+    { id: 509, name: "Walkers Smokey Bacon 6x25g", category: "Snacks", price: 2.49, size: "6x25g", desc: "Smokey bacon", icon: "fa-cookie", offer: false },
+    { id: 510, name: "Walkers Prawn Cocktail 6x25g", category: "Snacks", price: 2.49, size: "6x25g", desc: "Prawn cocktail", icon: "fa-cookie", offer: false },
+    { id: 511, name: "McCoy's Sea Salt 150g", category: "Snacks", price: 1.99, size: "150g", desc: "Thick cut crisps", icon: "fa-cookie", offer: false },
+    { id: 512, name: "McCoy's Smoky BBQ 150g", category: "Snacks", price: 1.99, size: "150g", desc: "Thick cut crisps", icon: "fa-cookie", offer: false },
+    // Snacks - Chocolate
+    { id: 521, name: "Cadbury Dairy Milk 180g", category: "Snacks", price: 1.89, size: "180g", desc: "Classic milk chocolate", icon: "fa-candy-bar", offer: false },
+    { id: 522, name: "Cadbury Dairy Milk Fruit 180g", category: "Snacks", price: 1.89, size: "180g", desc: "With fruit", icon: "fa-candy-bar", offer: false },
+    { id: 523, name: "Cadbury Dairy Milk Bits 120g", category: "Snacks", price: 1.49, size: "120g", desc: "Buttons", icon: "fa-candy-bar", offer: false },
+    { id: 524, name: "Galaxy 175g", category: "Snacks", price: 1.79, size: "175g", desc: "Smooth milk chocolate", icon: "fa-candy-bar", offer: false },
+    { id: 525, name: "Galaxy Ripple 150g", category: "Snacks", price: 1.79, size: "150g", desc: "Smooth ripples", icon: "fa-candy-bar", offer: false },
+    { id: 526, name: "Maltesers 103g", category: "Snacks", price: 1.59, size: "103g", desc: "Honeycomb balls", icon: "fa-candy-bar", offer: false },
+    { id: 527, name: "Skittles Fruities 160g", category: "Snacks", price: 1.59, size: "160g", desc: "Fruit sweets", icon: "fa-candy-bar", offer: false },
+    { id: 528, name: "Skittles Sour 160g", category: "Snacks", price: 1.59, size: "160g", desc: "Sour sweets", icon: "fa-candy-bar", offer: false },
+    { id: 529, name: "M&Ms Peanut 180g", category: "Snacks", price: 1.99, size: "180g", desc: "Peanut candy", icon: "fa-candy-bar", offer: false },
+    { id: 530, name: "M&Ms Milk Chocolate 180g", category: "Snacks", price: 1.99, size: "180g", desc: "Milk chocolate", icon: "fa-candy-bar", offer: false },
+    { id: 531, name: "Snickers 180g", category: "Snacks", price: 1.79, size: "180g", desc: "Chocolate nougat", icon: "fa-candy-bar", offer: false },
+    { id: 532, name: "Mars 180g", category: "Snacks", price: 1.79, size: "180g", desc: "Chocolate bar", icon: "fa-candy-bar", offer: false },
+    // Snacks - Sweets
+    { id: 541, name: "Haribo Starmix 250g", category: "Snacks", price: 1.50, size: "250g", desc: "Mixed gummy sweets", icon: "fa-candy-cane", offer: false },
+    { id: 542, name: "Haribo Supermix 500g", category: "Snacks", price: 2.49, size: "500g", desc: "Bulk sweets", icon: "fa-candy-cane", offer: false },
+    { id: 543, name: "Wine Gums 190g", category: "Snacks", price: 1.29, size: "190g", desc: "Fruit gums", icon: "fa-candy-cane", offer: false },
+    { id: 544, name: "Maoam 200g", category: "Snacks", price: 1.29, size: "200g", desc: "Fruit chews", icon: "fa-candy-cane", offer: false },
+    { id: 545, name: "Fruit Pastilles 190g", category: "Snacks", price: 1.29, size: "190g", desc: "Gummy sweets", icon: "fa-candy-cane", offer: false },
+    { id: 546, name: "Roses 400g", category: "Snacks", price: 2.49, size: "400g", desc: "Chocolate sweets", icon: "fa-candy-cane", offer: false },
+    { id: 547, name: "Sports Mixture 400g", category: "Snacks", price: 2.29, size: "400g", desc: "Mixed sweets", icon: "fa-candy-cane", offer: false },
+    // Snacks - Nuts
+    { id: 551, name: "Planters Peanuts 280g", category: "Snacks", price: 2.49, size: "280g", desc: "Dry roasted", icon: "fa-cookie", offer: false },
+    { id: 552, name: "Planters Salted 280g", category: "Snacks", price: 2.49, size: "280g", desc: "Salted peanuts", icon: "fa-cookie", offer: false },
+    { id: 553, name: " almonds 200g", category: "Snacks", price: 2.99, size: "200g", desc: "Raw almonds", icon: "fa-cookie", offer: false },
+    { id: 554, name: "Cashews 200g", category: "Snacks", price: 2.99, size: "200g", desc: "Roasted cashews", icon: "fa-cookie", offer: false },
+    { id: 555, name: "Pistachios 200g", category: "Snacks", price: 3.99, size: "200g", desc: "Salted pistachios", icon: "fa-cookie", offer: false },
+    // Snacks - Biscuits
+    { id: 561, name: "McVites Chocolate Digestives 400g", category: "Snacks", price: 1.79, size: "400g", desc: "Chocolate biscuits", icon: "fa-cookie", offer: false },
+    { id: 562, name: "McVites Digestives 400g", category: "Snacks", price: 1.49, size: "400g", desc: "Classic biscuits", icon: "fa-cookie", offer: false },
+    { id: 563, name: "McVites Hobnobs 300g", category: "Snacks", price: 1.49, size: "300g", desc: "Oat biscuits", icon: "fa-cookie", offer: false },
+    { id: 564, name: "Lotus Biscuits 300g", category: "Snacks", price: 1.99, size: "300g", desc: "Caramel biscuits", icon: "fa-cookie", offer: false },
+    { id: 565, name: "Jaffa Cakes 300g", category: "Snacks", price: 1.49, size: "300g", desc: "Chocolate cakes", icon: "fa-cookie", offer: false },
+    // Tobacco - Cigarettes
+    { id: 601, name: "Marlboro Gold 20s", category: "Tobacco", price: 13.00, size: "20 pack", desc: "Full flavour cigarettes", icon: "fa-smoking", offer: false,
+      highlights: ['Worlds most popular cigarette', 'Premium tobacco blend', 'Rich full flavour', 'Consistent quality'] },
+    { id: 602, name: "Marlboro Red 20s", category: "Tobacco", price: 13.00, size: "20 pack", desc: "Full flavour red", icon: "fa-smoking", offer: false },
+    { id: 603, name: "Marlboro Silver 20s", category: "Tobacco", price: 13.00, size: "20 pack", desc: "Medium blend", icon: "fa-smoking", offer: false },
+    { id: 604, name: "Marlboro menthol 20s", category: "Tobacco", price: 13.00, size: "20 pack", desc: "Menthol cigarettes", icon: "fa-smoking", offer: false },
+    { id: 605, name: "Mayfair 20s", category: "Tobacco", price: 11.50, size: "20 pack", desc: "Value cigarettes", icon: "fa-smoking", offer: false },
+    { id: 606, name: "Richmond 20s", category: "Tobacco", price: 10.50, size: "20 pack", desc: "Budget cigarettes", icon: "fa-smoking", offer: false },
+    { id: 607, name: "Lambert & Butler 20s", category: "Tobacco", price: 12.50, size: "20 pack", desc: "Premium cigarettes", icon: "fa-smoking", offer: false },
+    { id: 608, name: "Benson & Hedges 20s", category: "Tobacco", price: 12.50, size: "20 pack", desc: "Premium cigarettes", icon: "fa-smoking", offer: false },
+    { id: 609, name: "Sterling 20s", category: "Tobacco", price: 12.00, size: "20 pack", desc: "Medium cigarettes", icon: "fa-smoking", offer: false },
+    { id: 610, name: "Vogue Bleue 20s", category: "Tobacco", price: 13.50, size: "20 pack", desc: "Premium cigarettes", icon: "fa-smoking", offer: false },
+    // Tobacco - Rolling
+    { id: 621, name: "Golden Virginia 30g", category: "Tobacco", price: 14.99, size: "30g", desc: "Hand rolling tobacco", icon: "fa-smoking", offer: false },
+    { id: 622, name: "Golden Virginia Yellow 30g", category: "Tobacco", price: 14.99, size: "30g", desc: "Classic rolling tobacco", icon: "fa-smoking", offer: false },
+    { id: 623, name: "Amber Leaf 30g", category: "Tobacco", price: 14.99, size: "30g", desc: "Hand rolling tobacco", icon: "fa-smoking", offer: false },
+    { id: 624, name: "Drum 30g", category: "Tobacco", price: 13.99, size: "30g", desc: "Dutch rolling tobacco", icon: "fa-smoking", offer: false },
+    { id: 625, name: "Cutters Choice 30g", category: "Tobacco", price: 13.99, size: "30g", desc: "Rolling tobacco", icon: "fa-smoking", offer: false },
+    { id: 626, name: "Sambrook 30g", category: "Tobacco", price: 12.99, size: "30g", desc: "Hand rolling tobacco", icon: "fa-smoking", offer: false },
+    // Tobacco - Papers & Filters
+    { id: 631, name: "Rizla Blue King Size", category: "Tobacco", price: 1.30, size: "50 papers", desc: "Slim rolling papers", icon: "fa-smoking", offer: false },
+    { id: 632, name: "Rizla Silver King Size", category: "Tobacco", price: 1.50, size: "50 papers", desc: "Slim papers", icon: "fa-smoking", offer: false },
+    { id: 633, name: "Rizla Orange King Size", category: "Tobacco", price: 1.50, size: "50 papers", desc: "Slim papers", icon: "fa-smoking", offer: false },
+    { id: 634, name: "Rizla Liquorice 50s", category: "Tobacco", price: 1.50, size: "50 papers", desc: "Flavoured papers", icon: "fa-smoking", offer: false },
+    { id: 635, name: "Zig Zag Papers 70s", category: "Tobacco", price: 1.20, size: "70 papers", desc: "Rolling papers", icon: "fa-smoking", offer: false },
+    { id: 636, name: "Rizla Filters 100s", category: "Tobacco", price: 1.00, size: "100 filters", desc: "Cigarette filters", icon: "fa-smoking", offer: false },
+    { id: 637, name: "Sven Original Filters 100s", category: "Tobacco", price: 1.20, size: "100 filters", desc: "Cigarette filters", icon: "fa-smoking", offer: false },
+    { id: 638, name: "Smoking Accessories Kit", category: "Tobacco", price: 2.99, size: "Kit", desc: "Papers & filters", icon: "fa-smoking", offer: false },
+    // Vapes - Disposable
+    { id: 701, name: "Elf Bar 600 — Blueberry Ice", category: "Vapes", price: 5.99, size: "600 puffs", desc: "Disposable vape", icon: "fa-wind", offer: false,
+      highlights: ['600 puffs', 'Pre-charged & ready to use', 'No charging needed', 'Compact & portable'] },
+    { id: 702, name: "Elf Bar 600 — Watermelon", category: "Vapes", price: 5.99, size: "600 puffs", desc: "Disposable vape", icon: "fa-wind", offer: false },
+    { id: 703, name: "Elf Bar 600 — Grape", category: "Vapes", price: 5.99, size: "600 puffs", desc: "Disposable vape", icon: "fa-wind", offer: false },
+    { id: 704, name: "Elf Bar 600 — Cola", category: "Vapes", price: 5.99, size: "600 puffs", desc: "Disposable vape", icon: "fa-wind", offer: false },
+    { id: 705, name: "Elf Bar 600 — Strawberry Ice", category: "Vapes", price: 5.99, size: "600 puffs", desc: "Disposable vape", icon: "fa-wind", offer: false },
+    { id: 706, name: "Lost Mary 3500 — Watermelon", category: "Vapes", price: 9.99, size: "3500 puffs", desc: "Long-lasting disposable", icon: "fa-wind", offer: true,
+      highlights: ['3500 puffs capacity', 'Long lasting battery', 'Multiple flavours', 'Mesh coil technology'] },
+    { id: 707, name: "Lost Mary 3500 — Blueberry", category: "Vapes", price: 9.99, size: "3500 puffs", desc: "Long-lasting disposable", icon: "fa-wind", offer: true },
+    { id: 708, name: "Lost Mary 3500 — Strawberry", category: "Vapes", price: 9.99, size: "3500 puffs", desc: "Long-lasting disposable", icon: "fa-wind", offer: true },
+    { id: 709, name: "Lost Mary 3500 — Kiwi", category: "Vapes", price: 9.99, size: "3500 puffs", desc: "Long-lasting disposable", icon: "fa-wind", offer: true },
+    { id: 710, name: "Lost Mary 3500 — Cola", category: "Vapes", price: 9.99, size: "3500 puffs", desc: "Long-lasting disposable", icon: "fa-wind", offer: true },
+    { id: 711, name: "Geek Bar — Blueberry", category: "Vapes", price: 5.99, size: "575 puffs", desc: "Disposable vape", icon: "fa-wind", offer: false },
+    { id: 712, name: "Geek Bar — Grape", category: "Vapes", price: 5.99, size: "575 puffs", desc: "Disposable vape", icon: "fa-wind", offer: false },
+    { id: 713, name: "Geek Bar — Watermelon", category: "Vapes", price: 5.99, size: "575 puffs", desc: "Disposable vape", icon: "fa-wind", offer: false },
+    { id: 714, name: "Geek Bar — Mixed", category: "Vapes", price: 5.99, size: "575 puffs", desc: "Disposable vape", icon: "fa-wind", offer: false },
+    { id: 715, name: "SKE Crystal — Mango", category: "Vapes", price: 4.99, size: "800 puffs", desc: "Crystal bar", icon: "fa-wind", offer: false },
+    { id: 716, name: "SKE Crystal — Blueberry", category: "Vapes", price: 4.99, size: "800 puffs", desc: "Crystal bar", icon: "fa-wind", offer: false },
+    { id: 717, name: "SKE Crystal — Watermelon", category: "Vapes", price: 4.99, size: "800 puffs", desc: "Crystal bar", icon: "fa-wind", offer: false },
+    // Vapes - E-Liquids
+    { id: 721, name: "ElfLiq E-Liquid — Blueberry 10ml", category: "Vapes", price: 3.99, size: "10ml", desc: "E-liquid", icon: "fa-wind", offer: false },
+    { id: 722, name: "ElfLiq E-Liquid — Watermelon 10ml", category: "Vapes", price: 3.99, size: "10ml", desc: "E-liquid", icon: "fa-wind", offer: false },
+    { id: 723, name: "ElfLiq E-Liquid — Grape 10ml", category: "Vapes", price: 3.99, size: "10ml", desc: "E-liquid", icon: "fa-wind", offer: false },
+    { id: 724, name: "Monster E-Liquid — 10ml", category: "Vapes", price: 3.49, size: "10ml", desc: "E-liquid", icon: "fa-wind", offer: false },
+    { id: 725, name: "Dinner Lady E-Liquid — 10ml", category: "Vapes", price: 3.99, size: "10ml", desc: "E-liquid", icon: "fa-wind", offer: false },
+    // Vapes - Devices & Accessories
+    { id: 731, name: "Vapesso Pixos Pro Pod Kit", category: "Vapes", price: 24.99, size: "Kit", desc: "Pod system", icon: "fa-wind", offer: false },
+    { id: 732, name: "Innokin Endura T18 Kit", category: "Vapes", price: 19.99, size: "Kit", desc: "Starter kit", icon: "fa-wind", offer: false },
+    { id: 733, name: "Coil Pack of 5", category: "Vapes", price: 4.99, size: "5 coils", desc: "Replacement coils", icon: "fa-wind", offer: false },
+    // Groceries - Daily Essentials
+    { id: 801, name: "Semi-Skimmed Milk 2L", category: "Groceries", price: 1.69, size: "2L", desc: "Fresh milk", icon: "fa-shopping-bag", offer: false },
+    { id: 802, name: "Whole Milk 2L", category: "Groceries", price: 1.69, size: "2L", desc: "Full fat milk", icon: "fa-shopping-bag", offer: false },
+    { id: 803, name: "Oat Milk 1L", category: "Groceries", price: 2.49, size: "1L", desc: "Plant milk", icon: "fa-shopping-bag", offer: false },
+    { id: 804, name: "Almond Milk 1L", category: "Groceries", price: 2.49, size: "1L", desc: "Plant milk", icon: "fa-shopping-bag", offer: false },
+    { id: 805, name: "Free Range Eggs 12", category: "Groceries", price: 3.49, size: "12 eggs", desc: "Fresh eggs", icon: "fa-shopping-bag", offer: false },
+    { id: 806, name: "British Butter 250g", category: "Groceries", price: 2.29, size: "250g", desc: "Salted butter", icon: "fa-shopping-bag", offer: false },
+    { id: 807, name: "Lighter Spread 250g", category: "Groceries", price: 2.29, size: "250g", desc: "Low fat spread", icon: "fa-shopping-bag", offer: false },
+    { id: 808, name: "Cheddar Cheese 400g", category: "Groceries", price: 3.49, size: "400g", desc: "Mature cheddar", icon: "fa-shopping-bag", offer: false },
+    { id: 809, name: "Double Cream 300ml", category: "Groceries", price: 2.49, size: "300ml", desc: "Heavy cream", icon: "fa-shopping-bag", offer: false },
+    { id: 810, name: "Soured Cream 300ml", category: "Groceries", price: 1.99, size: "300ml", desc: "Sour cream", icon: "fa-shopping-bag", offer: false },
+    // Groceries - Bread & Bakery
+    { id: 821, name: "White Bread Loaf 800g", category: "Groceries", price: 1.29, size: "800g", desc: "Sliced bread", icon: "fa-shopping-bag", offer: false },
+    { id: 822, name: "Wholemeal Bread 800g", category: "Groceries", price: 1.49, size: "800g", desc: "Brown bread", icon: "fa-shopping-bag", offer: false },
+    { id: 823, name: "Toast Bread 600g", category: "Groceries", price: 1.49, size: "600g", desc: "White bread", icon: "fa-shopping-bag", offer: false },
+    { id: 824, name: "Bagels 6 Pack", category: "Groceries", price: 1.99, size: "6 bagels", desc: "Plain bagels", icon: "fa-shopping-bag", offer: false },
+    { id: 825, name: "Sub Rolls 4 Pack", category: "Groceries", price: 1.79, size: "4 rolls", desc: "Bread rolls", icon: "fa-shopping-bag", offer: false },
+    { id: 826, name: "Ciabatta 2 Pack", category: "Groceries", price: 2.29, size: "2 ciabatta", desc: "Italian bread", icon: "fa-shopping-bag", offer: false },
+    // Groceries - Pantry
+    { id: 831, name: "Pasta Spaghetti 500g", category: "Groceries", price: 1.29, size: "500g", desc: "Dry pasta", icon: "fa-shopping-bag", offer: false },
+    { id: 832, name: "Pasta Penne 500g", category: "Groceries", price: 1.29, size: "500g", desc: "Dry pasta", icon: "fa-shopping-bag", offer: false },
+    { id: 833, name: "White Rice 1kg", category: "Groceries", price: 1.99, size: "1kg", desc: "Long grain", icon: "fa-shopping-bag", offer: false },
+    { id: 834, name: "Basmati Rice 1kg", category: "Groceries", price: 2.99, size: "1kg", desc: "Basmati rice", icon: "fa-shopping-bag", offer: false },
+    { id: 835, name: "Jasmine Rice 1kg", category: "Groceries", price: 2.49, size: "1kg", desc: "Fragrant rice", icon: "fa-shopping-bag", offer: false },
+    { id: 836, name: "Tinned Tomatoes 4x400g", category: "Groceries", price: 2.99, size: "4x400g", desc: "Chopped tomatoes", icon: "fa-shopping-bag", offer: false },
+    { id: 837, name: "Baked Beans 4x410g", category: "Groceries", price: 2.49, size: "4x410g", desc: "Value beans", icon: "fa-shopping-bag", offer: false },
+    { id: 838, name: "Tinned Sweetcorn 3x340g", category: "Groceries", price: 1.99, size: "3x340g", desc: "Sweetcorn", icon: "fa-shopping-bag", offer: false },
+    { id: 839, name: "Olive Oil 500ml", category: "Groceries", price: 3.99, size: "500ml", desc: "Extra virgin", icon: "fa-shopping-bag", offer: false },
+    { id: 840, name: "Vegetable Oil 1L", category: "Groceries", price: 1.99, size: "1L", desc: "Cooking oil", icon: "fa-shopping-bag", offer: false },
+    { id: 841, name: "Sugar 1kg", category: "Groceries", price: 1.49, size: "1kg", desc: "Caster sugar", icon: "fa-shopping-bag", offer: false },
+    { id: 842, name: "Plain Flour 1.5kg", category: "Groceries", price: 1.49, size: "1.5kg", desc: "All purpose", icon: "fa-shopping-bag", offer: false },
+    // Groceries - Condiments
+    { id: 851, name: "Tomato Ketchup 570g", category: "Groceries", price: 1.99, size: "570g", desc: "Tomato sauce", icon: "fa-shopping-bag", offer: false },
+    { id: 852, name: "Brown Sauce 440g", category: "Groceries", price: 1.79, size: "440g", desc: "HP Sauce", icon: "fa-shopping-bag", offer: false },
+    { id: 853, name: "Mayonnaise 400ml", category: "Groceries", price: 1.99, size: "400ml", desc: "Mayo", icon: "fa-shopping-bag", offer: false },
+    { id: 854, name: "Mustard 215g", category: "Groceries", price: 1.49, size: "215g", desc: "English mustard", icon: "fa-shopping-bag", offer: false },
+    { id: 855, name: "Pickle 360g", category: "Groceries", price: 2.49, size: "360g", desc: "Pickle", icon: "fa-shopping-bag", offer: false },
+    { id: 856, name: "Hot Sauce 250ml", category: "Groceries", price: 2.29, size: "250ml", desc: "Tabasco", icon: "fa-shopping-bag", offer: false },
+  ];
+
+  let products = [];
+  let cart = [];
+  let currentCat = 'All';
+  let searchQ = '';
+  // Dynamic API URL - works locally and on production
+const API_BASE_URL = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1') 
+  ? 'http://localhost:5000' 
+  : 'https://lelocal-api-skyproject-1.onrender.com';
+
+  // RENDER
+  function render() {
+    let filtered = products;
+    if (currentCat !== 'All') filtered = filtered.filter(p => p.category === currentCat);
+    if (searchQ) filtered = filtered.filter(p => p.name.toLowerCase().includes(searchQ) || p.category.toLowerCase().includes(searchQ));
+
+    const grid = document.getElementById('productsGrid');
+    const title = document.getElementById('sectionTitle');
+    const count = document.getElementById('productCount');
+    const catEmojis = {'Beer':'🍺','Spirits':'🥃','Wine':'🍷','Cider':'🍏','Soft Drinks':'🥤','Snacks':'🍿','Tobacco':'🚬','Vapes':'💨','Groceries':'🛒','All':'🛍️'};
+    title.textContent = (catEmojis[currentCat]||'🛍️') + ' ' + (currentCat === 'All' ? 'All Products' : currentCat);
+    count.textContent = filtered.length + ' items';
+
+    if (!filtered.length) {
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--gray-400)"><i class="fas fa-search" style="font-size:2.5rem;display:block;margin-bottom:12px"></i><strong style="display:block;color:var(--gray-700);font-size:1.1rem">No products found</strong><p style="margin-top:6px">Try a different search or category</p></div>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map((p, index) => {
+      const inCart = cart.find(c => c.id === p.id);
+      const qty = inCart ? inCart.qty : 0;
+      const displayPrice = p.offer ? (p.price * 0.75).toFixed(2) : p.price.toFixed(2);
+      return `
+        <div class="product-card fade-in" style="animation-delay: ${index * 0.05}s" onclick="handleCardClick(event, ${p.id})">
+          <div class="product-img">
+            ${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><i class="fas ${p.icon||'fa-box'}" style="display:none"></i>` : `<i class="fas ${p.icon||'fa-box'}"></i>`}
+            ${p.offer ? '<span class="offer-tag">25% Off</span>' : ''}
+          </div>
+          <div class="product-body">
+            <div class="product-cat">${p.category}</div>
+            <div class="product-name">${p.name}</div>
+            ${p.size ? `<div class="product-size">${p.size}</div>` : ''}
+            <div class="product-footer">
+              <div class="product-price">
+                ${p.offer ? `<del>£${p.price.toFixed(2)}</del>` : ''}
+                £${displayPrice}
+              </div>
+              ${qty > 0
+                ? `<div class="qty-controls" onclick="event.stopPropagation()">
+                    <button class="qty-btn" onclick="changeQty(${p.id},-1)"><i class="fas fa-minus"></i></button>
+                    <span class="qty-val">${qty}</span>
+                    <button class="qty-btn" onclick="changeQty(${p.id},1)"><i class="fas fa-plus"></i></button>
+                  </div>`
+                : `<button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id})"><i class="fas fa-plus"></i></button>`
+              }
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function handleCardClick(e, id) {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    
+    const modal = document.getElementById('productModal');
+    const content = document.getElementById('productDetailContent');
+    
+    const imageHtml = p.image ? 
+      `<img src="${p.image}" alt="${p.name}" onclick="viewFullscreen('${p.image}', '${p.name}')" style="cursor:zoom-in">` :
+      `<i class="fas ${p.icon||'fa-box'}"></i>`;
+    
+    const displayPrice = p.offer ? (p.price * 0.75).toFixed(2) : p.price.toFixed(2);
+    const highlights = [
+      'Premium quality product',
+      'Authentic branding',
+      'Best before date checked',
+      'Secure packaging'
+    ];
+    
+    content.innerHTML = `
+      <div class="product-detail-header">
+        ${imageHtml}
+        <button class="close-modal" onclick="closeProductDetail()">&times;</button>
+      </div>
+      <div class="product-detail-body">
+        <div class="product-detail-cat">${p.category}</div>
+        <div class="product-detail-name">${p.name}</div>
+        ${p.size ? `<div class="product-detail-size"><i class="fas fa-box"></i> ${p.size}</div>` : ''}
+        
+        <div class="product-highlights">
+          <h4><i class="fas fa-star"></i> Product Features</h4>
+          <ul>${highlights.map(h => `<li><i class="fas fa-check-circle"></i> ${h}</li>`).join('')}</ul>
+        </div>
+        
+        ${p.desc ? `
+        <div class="product-description">
+          <h4><i class="fas fa-info-circle"></i> Description</h4>
+          <p>${p.desc}</p>
+        </div>
+        ` : ''}
+        
+        <div class="product-detail-price">
+          ${p.offer ? `<del>£${p.price.toFixed(2)}</del>` : ''}
+          £${displayPrice}
+        </div>
+        
+        <div class="product-detail-qty">
+          <label for="detailQtyInput">Quantity:</label>
+          <div class="product-detail-qty-controls">
+            <button onclick="updateDetailQty(-1)"><i class="fas fa-minus"></i></button>
+            <input type="number" id="detailQtyInput" value="1" min="1">
+            <button onclick="updateDetailQty(1)"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+        
+        <button class="product-detail-add-btn" id="detailAddBtn" onclick="addFromDetail(${p.id})">
+          <i class="fas fa-shopping-basket"></i> Add to Cart - £${displayPrice}
+        </button>
+      </div>
+    `;
+    
+    currentDetailId = p.id;
+    detailQty = 1;
+    modal.classList.add('open');
+  }
+
+  let detailQty = 1;
+  let currentDetailId = null;
+
+  function updateDetailQty(delta) {
+    detailQty += delta;
+    if (detailQty < 1) detailQty = 1;
+    document.getElementById('detailQtyInput').value = detailQty;
+    updateDetailBtn();
+  }
+
+  function updateDetailBtn() {
+    const p = products.find(x => x.id === currentDetailId);
+    if (!p) return;
+    const price = p.offer ? p.price * 0.75 : p.price;
+    const total = (price * detailQty).toFixed(2);
+    document.getElementById('detailAddBtn').innerHTML = `<i class="fas fa-shopping-basket"></i> Add to Cart - £${total}`;
+  }
+
+  function closeProductDetail() {
+    document.getElementById('productModal').classList.remove('open');
+    currentDetailId = null;
+    detailQty = 1;
+  }
+
+  function addFromDetail(id) {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    const price = p.offer ? p.price * 0.75 : p.price;
+    const existing = cart.find(x => x.id === id);
+    if (existing) {
+      existing.qty += detailQty;
+    } else {
+      cart.push({ ...p, price, qty: detailQty, originalPrice: p.price });
+    }
+    closeProductDetail();
+    updateCartUI();
+    updateCartUI();
+    showToast(p.name + ' added to basket');
+    document.getElementById('cartPanel').classList.add('open');
+    document.getElementById('cartOverlay').classList.add('show');
+  }
+
+  function viewFullscreen(src, name) {
+    document.getElementById('fullscreenImg').src = src;
+    document.getElementById('fullscreenImg').alt = name;
+    document.getElementById('fullscreenImage').classList.add('show');
+  }
+
+  function closeFullscreen() {
+    document.getElementById('fullscreenImage').classList.remove('show');
+  }
+
+  async function filterCat(btn, cat) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    currentCat = cat;
+    
+    try {
+      const url = cat !== 'All' 
+        ? `${API_BASE_URL}/products/?category=${encodeURIComponent(cat)}`
+        : `${API_BASE_URL}/products/`;
+      const res = await fetch(url);
+      const data = await res.json();
+      products = data.products || [];
+    } catch (e) {
+      console.error('Failed to load products:', e);
+      products = defaultProducts.filter(p => cat === 'All' || p.category === cat);
+    }
+    
+    render();
+  }
+
+  async function handleSearch() {
+    searchQ = document.getElementById('searchInput').value.toLowerCase().trim();
+    try {
+      const url = searchQ 
+        ? `${API_BASE_URL}/products/?search=${encodeURIComponent(searchQ)}`
+        : `${API_BASE_URL}/products/`;
+      const res = await fetch(url);
+      const data = await res.json();
+      products = data.products || [];
+    } catch (e) {
+      console.error('Search failed:', e);
+      products = defaultProducts.filter(p => 
+        p.name.toLowerCase().includes(searchQ) || p.category.toLowerCase().includes(searchQ)
+      );
+    }
+    render();
+  }
+
+  // CART
+  function addToCart(id) {
+    const p = products.find(p => p.id === id);
+    if (!p) return;
+    const price = p.offer ? p.price * 0.75 : p.price;
+    const existing = cart.find(c => c.id === id);
+    if (existing) existing.qty++;
+    else cart.push({ ...p, price, qty: 1 });
+    updateCartUI();
+    render();
+    showToast('Added to basket!');
+  }
+
+  function changeQty(id, delta) {
+    const idx = cart.findIndex(c => c.id === id);
+    if (idx === -1) { if (delta > 0) addToCart(id); return; }
+    cart[idx].qty += delta;
+    if (cart[idx].qty <= 0) cart.splice(idx, 1);
+    updateCartUI();
+    render();
+  }
+
+  function updateCartUI() {
+    const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
+    const tobaccoTotal = cart.filter(c => c.category === 'Tobacco').reduce((s, c) => s + c.price * c.qty, 0);
+    const nonTobaccoTotal = total - tobaccoTotal;
+    let smallOrderFee = 0;
+    if (nonTobaccoTotal > 0 && nonTobaccoTotal < 12.50) smallOrderFee = 4.99;
+    else if (nonTobaccoTotal > 0 && nonTobaccoTotal < 15) smallOrderFee = 1.49;
+    const count = cart.reduce((s, c) => s + c.qty, 0);
+    const delivery = nonTobaccoTotal >= 25 ? 0 : 1.79;
+    const serviceCharge = 0.99;
+    const bagFee = 0.30;
+    const grandTotal = total + delivery + smallOrderFee + serviceCharge + bagFee;
+
+    document.getElementById('cartCountMain').textContent = count + (count === 1 ? ' item' : ' items');
+    document.getElementById('cartTotalMain').textContent = '· £' + total.toFixed(2);
+
+    const itemsEl = document.getElementById('cartItems');
+    const subtotalsEl = document.getElementById('cartSubtotals');
+    const minimumEl = document.getElementById('cartMinimum');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    if (!cart.length) {
+      itemsEl.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-basket"></i><h3>Your basket is empty</h3><p>Add some items to get started!</p></div>`;
+      subtotalsEl.style.display = 'none';
+      minimumEl.style.display = 'none';
+      checkoutBtn.disabled = true;
+    } else {
+      itemsEl.innerHTML = cart.map(c => `
+        <div class="cart-item">
+          <div class="cart-item-img">
+            ${c.image ? `<img src="${c.image}" alt="${c.name}">` : `<i class="fas ${c.icon||'fa-box'}"></i>`}
+          </div>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${c.name}</div>
+            <div class="cart-item-price">£${c.price.toFixed(2)} each</div>
+          </div>
+          <div class="cart-item-controls">
+            <button class="ci-qty-btn" onclick="changeQty(${c.id},-1)"><i class="fas fa-minus"></i></button>
+            <span class="ci-qty">${c.qty}</span>
+            <button class="ci-qty-btn" onclick="changeQty(${c.id},1)"><i class="fas fa-plus"></i></button>
+          </div>
+          <div class="ci-total">£${(c.price * c.qty).toFixed(2)}</div>
+        </div>
+      `).join('');
+      subtotalsEl.style.display = 'block';
+      document.getElementById('subtotalVal').textContent = '£' + total.toFixed(2);
+      document.getElementById('deliveryVal').textContent = delivery === 0 ? 'FREE' : '£' + delivery.toFixed(2);
+      document.getElementById('smallOrderFeeRow').style.display = smallOrderFee > 0 ? 'flex' : 'none';
+      document.getElementById('smallOrderFeeVal').textContent = smallOrderFee > 0 ? '£' + smallOrderFee.toFixed(2) : '£0.00';
+      document.getElementById('totalVal').textContent = '£' + grandTotal.toFixed(2);
+
+      if (nonTobaccoTotal > 0 && nonTobaccoTotal < 10) {
+        minimumEl.style.display = 'flex';
+        document.getElementById('cartMinimum').querySelector('i').nextSibling.textContent = ' Minimum order is £10 (tobacco excluded)';
+        checkoutBtn.disabled = true;
+      } else {
+        minimumEl.style.display = 'none';
+        checkoutBtn.disabled = false;
+      }
+    }
+    document.getElementById('checkoutTotal').textContent = '£' + grandTotal.toFixed(2);
+    document.getElementById('placeOrderTotal').textContent = '£' + grandTotal.toFixed(2);
+
+    const items = cart.map(c => `<div class="summary-item"><span>${c.name} × ${c.qty}</span><span>£${(c.price * c.qty).toFixed(2)}</span></div>`).join('');
+    let feeRow = smallOrderFee > 0 ? `<div class="summary-item"><span>Small Order Fee</span><span>£${smallOrderFee.toFixed(2)}</span></div>` : '';
+    document.getElementById('checkoutSummaryItems').innerHTML = items + `<div class="summary-item"><span>Delivery</span><span>${delivery === 0 ? 'FREE' : '£' + delivery.toFixed(2)}</span></div><div class="summary-item"><span>Service Fee</span><span>£0.99</span></div><div class="summary-item"><span>Bag Fee</span><span>£0.30</span></div>` + feeRow;
+    document.getElementById('checkoutSummaryTotal').textContent = '£' + grandTotal.toFixed(2);
+  }
+
+  function openCart() {
+    document.getElementById('cartOverlay').classList.add('open');
+    document.getElementById('cartPanel').classList.add('open');
+  }
+  function closeCart() {
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartPanel').classList.remove('open');
+  }
+  function openCheckout() { closeCart(); document.getElementById('checkoutModal').classList.add('open'); }
+  function closeCheckout() { document.getElementById('checkoutModal').classList.remove('open'); }
+
+  // ADDRESS FINDER - Leicester postcodes
+  const leicesterAddresses = [
+    { postcode: 'LE1 1AA', address: '1 High Street, Leicester' },
+    { postcode: 'LE1 1AB', address: '10-30 High Street, Leicester' },
+    { postcode: 'LE1 2AA', address: '1 Castle Street, Leicester' },
+    { postcode: 'LE1 2AB', address: '1-11 Castle Street, Leicester' },
+    { postcode: 'LE1 3AA', address: '1 Church Street, Leicester' },
+    { postcode: 'LE1 3AB', address: '1-29 Church Street, Leicester' },
+    { postcode: 'LE1 4AA', address: '1 Granby Street, Leicester' },
+    { postcode: 'LE1 4AB', address: '1-25 Granby Street, Leicester' },
+    { postcode: 'LE1 5AA', address: '1 Oxford Street, Leicester' },
+    { postcode: 'LE1 5AB', address: '1-20 Oxford Street, Leicester' },
+    { postcode: 'LE1 6AA', address: '1 Hotel Street, Leicester' },
+    { postcode: 'LE1 7AA', address: '1 Bowling Green Street, Leicester' },
+    { postcode: 'LE2 0AA', address: '1 University Road, Leicester' },
+    { postcode: 'LE2 0AB', address: '1-20 University Road, Leicester' },
+    { postcode: 'LE2 4AA', address: '1 London Road, Leicester' },
+    { postcode: 'LE2 4AB', address: '1-30 London Road, Leicester' },
+    { postcode: 'LE2 5AA', address: '1 Narborough Road, Leicester' },
+    { postcode: 'LE2 5AB', address: '1-25 Narborough Road, Leicester' },
+    { postcode: 'LE2 6AA', address: '1 Aylestone Road, Leicester' },
+    { postcode: 'LE2 6AB', address: '1-30 Aylestone Road, Leicester' },
+    { postcode: 'LE2 7AA', address: '1 Saffron Lane, Leicester' },
+    { postcode: 'LE2 7AB', address: '1-20 Saffron Lane, Leicester' },
+    { postcode: 'LE2 8AA', address: '1 Glenfield Road, Leicester' },
+    { postcode: 'LE2 8AB', address: '1-15 Glenfield Road, Leicester' },
+    { postcode: 'LE3 0AA', address: '1 Blackpool Road, Leicester' },
+    { postcode: 'LE3 0AB', address: '1-25 Blackpool Road, Leicester' },
+    { postcode: 'LE3 5AA', address: '1 Beaumont Road, Leicester' },
+    { postcode: 'LE3 5AB', address: '1-18 Beaumont Road, Leicester' },
+    { post_postcode: 'LE3 6AA', address: '1 Braunstone Gate, Leicester' },
+    { postcode: 'LE3 6AB', address: '1-20 Braunstone Gate, Leicester' },
+    { postcode: 'LE3 9AA', address: '1 Turville Road, Leicester' },
+    { postcode: 'LE3 9AB', address: '1-40 Turville Road, Leicester' },
+    { postcode: 'LE4 0AA', address: '1 Belgrave Gate, Leicester' },
+    { postcode: 'LE4 0AB', address: '1-15 Belgrave Gate, Leicester' },
+    { postcode: 'LE4 1AA', address: '1 trocadero, Leicester' },
+    { postcode: 'LE4 2AA', address: '1 Catherine Street, Leicester' },
+    { postcode: 'LE4 3AA', address: '1 Maidenwell, Leicester' },
+    { postcode: 'LE4 4AA', address: '1 Hamilton Square, Leicester' },
+    { postcode: 'LE4 5AA', address: '1 Wellington Street, Leicester' },
+    { postcode: 'LE4 6AA', address: '1 East Church Road, Leicester' },
+    { postcode: 'LE4 7AA', address: '1 Church Hill Road, Leicester' },
+    { postcode: 'LE5 1AA', address: '1 St Saveur Road, Leicester' },
+    { postcode: 'LE5 2AA', address: '1 St Margaret Way, Leicester' },
+    { postcode: 'LE5 3AA', address: '1 Tregunter Road, Leicester' },
+    { postcode: 'LE5 4AA', address: '1 Colchester Road, Leicester' },
+    { postcode: 'LE5 5AA', address: '1 Barkby Road, Leicester' },
+    { postcode: 'LE5 6AA', address: '1 Gipsy Lane, Leicester' },
+    { postcode: 'LE5 7AA', address: '1 Thurmaston Lane, Leicester' },
+    { postcode: 'LE5 8AA', address: '1 Trocadero Way, Leicester' },
+    { postcode: 'LE6 0AA', address: '1 Ashby Road, Leicester' },
+    { postcode: 'LE6 1AA', address: '1 Wood Street, Leicester' },
+  ];
+
+  let addressTimeout;
+  function initAddressFinder() {
+    const input = document.getElementById('postcodeLookup');
+    if (!input) return;
+    input.addEventListener('input', function() {
+      clearTimeout(addressTimeout);
+      addressTimeout = setTimeout(() => searchAddresses(this.value), 300);
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.form-group')) {
+        const results = document.getElementById('addressDropdown');
+        if (results) results.style.display = 'none';
+      }
+    });
+  }
+
+  function searchAddresses(query) {
+    const resultsDiv = document.getElementById('addressDropdown');
+    if (!resultsDiv) return;
+    if (query.length < 2) { resultsDiv.style.display = 'none'; return; }
+    query = query.toLowerCase();
+    const results = leicesterAddresses.filter(addr => 
+      addr.postcode.toLowerCase().includes(query) || addr.address.toLowerCase().includes(query)
+    ).slice(0, 8);
+    if (results.length === 0) { resultsDiv.style.display = 'none'; return; }
+    resultsDiv.innerHTML = results.map(addr => `
+      <div class="address-result-item" onclick="selectAddress('${addr.address.replace(/'/g, "\\'")}, ${addr.postcode}')">
+        <strong>${addr.postcode}</strong> ${addr.address}
+      </div>
+    `).join('');
+    resultsDiv.style.display = 'block';
+  }
+
+  function selectAddress(addr) {
+    document.getElementById('custAddress').value = addr;
+    const results = document.getElementById('addressDropdown');
+    if (results) results.style.display = 'none';
+    document.getElementById('postcodeLookup').value = '';
+  }
+
+  async function placeOrder() {
+    const name = document.getElementById('custName').value.trim();
+    const phone = document.getElementById('custPhone').value.trim();
+    const address = document.getElementById('custAddress').value.trim();
+    if (!name || !phone || !address) { showToast('Please fill in all required fields'); return; }
+    if (!cart.length) { showToast('Your basket is empty'); return; }
+    
+    const postcodeInput = document.getElementById('postcodeLookup').value.trim().toUpperCase();
+    const leicesterPrefixes = ['LE1', 'LE2', 'LE3', 'LE4', 'LE5', 'LE6', 'LE7', 'LE8', 'LE9'];
+    const isLeicester = leicesterPrefixes.some(prefix => postcodeInput.startsWith(prefix));
+    if (!isLeicester) { showToast('We only deliver to Leicester. Please enter a LE1-LE9 postcode.'); return; }
+
+    const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
+    const tobaccoTotal = cart.filter(c => c.category === 'Tobacco').reduce((s, c) => s + c.price * c.qty, 0);
+    const nonTobaccoTotal = total - tobaccoTotal;
+    let smallOrderFee = 0;
+    if (nonTobaccoTotal > 0 && nonTobaccoTotal < 12.50) smallOrderFee = 4.99;
+    else if (nonTobaccoTotal > 0 && nonTobaccoTotal < 15) smallOrderFee = 1.49;
+    const delivery = nonTobaccoTotal >= 25 ? 0 : 1.79;
+    const serviceCharge = 0.99;
+    const bagFee = 0.30;
+    const grandTotal = total + delivery + smallOrderFee + serviceCharge + bagFee;
+    
+    try {
+      const currentUser = JSON.parse(localStorage.getItem('leLocalSession') || 'null');
+      const userId = currentUser?.id || null;
+      
+      await fetch(`${API_BASE_URL}/orders/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: userId,
+          items: cart.map(c => ({ name: c.name, qty: c.qty, price: c.price })),
+            total: grandTotal,
+            delivery_address: address,
+            payment: 'card'
+          })
+        });
+        
+        const res = await fetch(`${API_BASE_URL}/payments/create-checkout`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: grandTotal.toFixed(2),
+            currency: 'GBP',
+            description: `Le Local Order - ${name}`
+          })
+        });
+        const data = await res.json();
+        if (data.checkout_url) {
+          window.location.href = data.checkout_url;
+          return;
+        } else if (data.error) {
+          showToast('Payment error: ' + data.error);
+          return;
+        }
+      } catch (e) {
+        showToast('Payment failed. Please try again.');
+        console.error('Payment error:', e);
+      }
+    
+    const order = {
+      id: Date.now(),
+      customer: { name, phone, address },
+      items: cart.map(c => ({ name: c.name, qty: c.qty, price: c.price })),
+      total: grandTotal,
+      smallOrderFee: smallOrderFee,
+      delivery: delivery,
+      serviceCharge: serviceCharge,
+      bagFee: bagFee,
+      payment: 'card',
+      status: 'pending',
+      date: new Date().toISOString()
+    };
+
+    // Try to save to API
+    try {
+      const currentUser = JSON.parse(localStorage.getItem('leLocalSession') || 'null');
+      const userId = currentUser?.id || null;
+      
+      if (userId) {
+        await fetch(`${API_BASE_URL}/orders/`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            user_id: userId,
+            items: order.items,
+            total: grandTotal,
+            delivery_address: address
+          })
+        });
+      }
+    } catch (e) {
+      console.error('Failed to save order to API:', e);
+    }
+
+    // Also save locally
+    const orders = JSON.parse(localStorage.getItem('leLocalOrders') || '[]');
+    orders.push(order);
+    localStorage.setItem('leLocalOrders', JSON.stringify(orders));
+
+    closeCheckout();
+    cart = [];
+    updateCartUI();
+    render();
+
+    document.getElementById('successOrderNum').textContent = '#ORD' + String(order.id).slice(-4);
+    document.getElementById('successModal').classList.add('open');
+  }
+
+  function closeSuccess() { document.getElementById('successModal').classList.remove('open'); }
+
+  function openAccountModal() { 
+    window.location.href = 'le-local-account.html';
+  }
+
+  let currentUser = null;
+
+  function logout() {
+    currentUser = null;
+    showToast('Logged out successfully');
+  }
+
+  // ORDER TRACKING
+  async function openOrdersModal() {
+    let orders = [];
+    try {
+      const currentUser = JSON.parse(localStorage.getItem('leLocalSession') || 'null');
+      const url = currentUser?.id 
+        ? `${API_BASE_URL}/orders/?user_id=${currentUser.id}`
+        : `${API_BASE_URL}/orders/`;
+      const res = await fetch(url);
+      const data = await res.json();
+      orders = data.orders || [];
+    } catch (e) {
+      console.error('Failed to load orders from API:', e);
+      orders = JSON.parse(localStorage.getItem('leLocalOrders') || '[]');
+    }
+    
+    let modal = document.getElementById('ordersModal');
+    if (!modal) {
+      document.body.innerHTML += `
+        <div class="modal-overlay" id="ordersModal">
+          <div class="modal-box">
+            <div class="modal-header">
+              <h2><i class="fas fa-clipboard-list"></i> My Orders</h2>
+              <button class="close-btn" onclick="document.getElementById('ordersModal').classList.remove('open')">&times;</button>
+            </div>
+            <div class="modal-body" id="ordersContent"></div>
+          </div>
+        </div>
+      `;
+      modal = document.getElementById('ordersModal');
+    }
+    const content = document.getElementById('ordersContent');
+    if (orders.length === 0) {
+      content.innerHTML = '<div style="text-align:center;padding:40px;color:var(--gray-500)"><i class="fas fa-shopping-bag" style="font-size:3rem;margin-bottom:12px;opacity:0.3"></i><p>No orders yet</p><p style="font-size:0.85rem">Your order history will appear here</p></div>';
+    } else {
+      content.innerHTML = orders.slice(0, 10).map(o => `
+        <div class="order-card">
+          <div class="order-header">
+            <strong>#ORD${o.id}</strong>
+            <span class="order-status ${o.status}">${o.status || 'pending'}</span>
+          </div>
+          <div class="order-items">${o.items ? o.items.map(i => i.name).join(', ') : 'Items'}</div>
+          <div class="order-footer">
+            <span>£${o.total ? o.total.toFixed(2) : '0.00'}</span>
+            <span>${o.date || new Date().toLocaleDateString()}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+    modal.classList.add('open');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  // INIT
+  function loadProducts() {
+    const isLocal = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1');
+    const apiUrl = isLocal ? 'http://localhost:5000' : 'https://lelocal-api-skyproject-1.onrender.com';
+    fetch(apiUrl + '/products/')
+      .then(res => res.json())
+      .then(data => {
+        products = data.products || [];
+        console.log('Products loaded:', products.length);
+        render();
+      })
+      .catch(e => {
+        console.error('Failed:', e);
+        products = defaultProducts;
+        console.log('Products loaded (fallback):', products.length);
+        render();
+      });
+  }
+  
+  window.onload = loadProducts;
+  
+  // Check URL for category parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const catParam = urlParams.get('cat');
+  if (catParam && ['Beer','Spirits','Wine','Cider','Soft Drinks','Snacks','Tobacco','Vapes','Groceries'].includes(catParam)) {
+    currentCat = catParam;
+    // Fetch products for the category
+    setTimeout(async () => {
+      try {
+        const url = `${API_BASE_URL}/products/?category=${encodeURIComponent(catParam)}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        products = data.products || [];
+      } catch (e) {
+        console.error('Failed to load category products:', e);
+      }
+      render();
+      
+      // Find and activate the matching button
+      const btns = document.querySelectorAll('.cat-btn');
+      btns.forEach(btn => {
+        if (btn.textContent.includes(catParam)) {
+          btn.classList.add('active');
+        }
+      });
+    }, 100);
+  }
+  
+  render();
+  updateCartUI();
+  initAddressFinder();
+
+  // ESCAPE KEY
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeProductDetail();
+      closeFullscreen();
+      closeCart();
+      closeCheckout();
+    }
+  });
+</script>
+</body>
+</html>
